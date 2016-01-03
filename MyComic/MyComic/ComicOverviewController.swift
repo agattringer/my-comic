@@ -18,11 +18,11 @@ class ComicOverviewController: UITableViewController{
     }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 5
+        return 3
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 5
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -39,7 +39,14 @@ class ComicOverviewController: UITableViewController{
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCellWithIdentifier("comicCell")!
+        let cell = tableView.dequeueReusableCellWithIdentifier("comicCell")! as UITableViewCell
+        cell.textLabel?.text = "test"
+        
+        return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 
 }
