@@ -20,8 +20,17 @@ class ComicOverviewController: UITableViewController{
         self.tableView.registerNib(nib, forCellReuseIdentifier: cellReuseIdentifier)
         
         self.title = "Comics"
+        
+        //setup navbar
+        let settingsButton = UIBarButtonItem(title: "\u{2699}", style: UIBarButtonItemStyle.Plain, target: self, action: "settingsButtonPressed")
+        navigationItem.setLeftBarButtonItem(settingsButton, animated: false)
     }
 
+    //settings button pressed
+    func settingsButtonPressed(){
+        NSLog(":::settings pressed:::")
+    }
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 3
     }

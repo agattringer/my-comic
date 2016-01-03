@@ -15,5 +15,4 @@ class ComicTableViewCell : UITableViewCell {
     @IBOutlet weak var tumbnailImageView: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
     
-    
 }
