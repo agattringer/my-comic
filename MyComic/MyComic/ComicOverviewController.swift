@@ -10,9 +10,14 @@ import UIKit
 
 class ComicOverviewController: UITableViewController{
 
+    let cellReuseIdentifier = "ComicCell"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
+        let nib = UINib(nibName: "ComicTableViewCell", bundle: nil)
+        self.tableView.registerNib(nib, forCellReuseIdentifier: cellReuseIdentifier)
         
         self.title = "Comics"
     }
@@ -39,10 +44,15 @@ class ComicOverviewController: UITableViewController{
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("comicCell")! as UITableViewCell
-        cell.textLabel?.text = "test"
+        let cell:ComicTableViewCell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as! ComicTableViewCell
+        
+        cell.descriptionLabel.text = "This is comic number xy more text because testing is important"
         
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return ComicTableViewCell.comicCellHeight;
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
