@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E38487D61C327E46008388A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38487D51C327E46008388A7 /* AppDelegate.swift */; };
-		E38487D81C327E46008388A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38487D71C327E46008388A7 /* ViewController.swift */; };
+		E38487D81C327E46008388A7 /* ComicOverviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38487D71C327E46008388A7 /* ComicOverviewController.swift */; };
 		E38487DB1C327E46008388A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E38487D91C327E46008388A7 /* Main.storyboard */; };
 		E38487DD1C327E46008388A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E38487DC1C327E46008388A7 /* Assets.xcassets */; };
 		E38487E01C327E46008388A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E38487DE1C327E46008388A7 /* LaunchScreen.storyboard */; };
@@ -36,7 +36,7 @@
 /* Begin PBXFileReference section */
 		E38487D21C327E46008388A7 /* MyComic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyComic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E38487D51C327E46008388A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E38487D71C327E46008388A7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E38487D71C327E46008388A7 /* ComicOverviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicOverviewController.swift; sourceTree = "<group>"; };
 		E38487DA1C327E46008388A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E38487DC1C327E46008388A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E38487DF1C327E46008388A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -97,8 +97,10 @@
 		E38487D41C327E46008388A7 /* MyComic */ = {
 			isa = PBXGroup;
 			children = (
+				E3D4094C1C39520000FE5FA9 /* view */,
+				E3D4094B1C3951F100FE5FA9 /* model */,
 				E38487D51C327E46008388A7 /* AppDelegate.swift */,
-				E38487D71C327E46008388A7 /* ViewController.swift */,
+				E38487D71C327E46008388A7 /* ComicOverviewController.swift */,
 				E38487D91C327E46008388A7 /* Main.storyboard */,
 				E38487DC1C327E46008388A7 /* Assets.xcassets */,
 				E38487DE1C327E46008388A7 /* LaunchScreen.storyboard */,
@@ -123,6 +125,20 @@
 				E38487F71C327E46008388A7 /* Info.plist */,
 			);
 			path = MyComicUITests;
+			sourceTree = "<group>";
+		};
+		E3D4094B1C3951F100FE5FA9 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		E3D4094C1C39520000FE5FA9 /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = view;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,7 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E38487D81C327E46008388A7 /* ViewController.swift in Sources */,
+				E38487D81C327E46008388A7 /* ComicOverviewController.swift in Sources */,
 				E38487D61C327E46008388A7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -397,8 +413,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = MyComic/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 9.1;
 				PRODUCT_BUNDLE_IDENTIFIER = at.fhhooe.mc.gattringer.MyComic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -408,8 +427,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = MyComic/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 9.1;
 				PRODUCT_BUNDLE_IDENTIFIER = at.fhhooe.mc.gattringer.MyComic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -482,6 +504,7 @@
 				E38487FC1C327E46008388A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E38487FD1C327E46008388A7 /* Build configuration list for PBXNativeTarget "MyComicTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +513,7 @@
 				E38487FF1C327E46008388A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E38488001C327E46008388A7 /* Build configuration list for PBXNativeTarget "MyComicUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +522,7 @@
 				E38488021C327E46008388A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
