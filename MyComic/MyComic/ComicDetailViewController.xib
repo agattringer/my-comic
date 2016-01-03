@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ComicDetailViewController" customModule="MyComic" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="169-WJ-Zh7" id="0UZ-Gw-02L"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="169-WJ-Zh7">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cph-L9-bwH">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="323" id="6x8-In-KbH"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="6x8-In-KbH"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="6x8-In-KbH"/>
+                        </mask>
+                    </variation>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Cph-L9-bwH" firstAttribute="leading" secondItem="169-WJ-Zh7" secondAttribute="leading" id="ZP1-z8-Kmk"/>
+                <constraint firstAttribute="trailing" secondItem="Cph-L9-bwH" secondAttribute="trailing" id="ZYE-rJ-lyd"/>
+                <constraint firstItem="Cph-L9-bwH" firstAttribute="centerY" secondItem="169-WJ-Zh7" secondAttribute="centerY" id="fpZ-OZ-4Iy"/>
+            </constraints>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="Cph-L9-bwH"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="ZP1-z8-Kmk"/>
+                    <exclude reference="ZYE-rJ-lyd"/>
+                    <exclude reference="fpZ-OZ-4Iy"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=compact">
+                <mask key="subviews">
+                    <include reference="Cph-L9-bwH"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="ZP1-z8-Kmk"/>
+                    <include reference="ZYE-rJ-lyd"/>
+                    <include reference="fpZ-OZ-4Iy"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+</document>

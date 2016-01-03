@@ -66,6 +66,11 @@ class ComicOverviewController: UITableViewController{
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        
+        let comicDetail:ComicDetailViewController = ComicDetailViewController()
+        self.navigationController?.pushViewController(comicDetail, animated: true)
+        
     }
 
 }
