@@ -9,6 +9,19 @@
 import UIKit
 
 class ComicDetailViewController : UIViewController {
+    var comic: ComicProtocol
+    
+    init(comic:ComicProtocol){
+        self.comic = comic
+        super.init(nibName: nil, bundle: nil)
+        
+        self.title = comic.getDescription()
+    }
+    
+    //we are not nscoding compliant
+    required init(coder: NSCoder) {
+        fatalError("NSCoding not supported")
+    }
     
     override func viewDidLoad() {
         

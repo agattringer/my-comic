@@ -14,6 +14,8 @@
 		E38487E01C327E46008388A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E38487DE1C327E46008388A7 /* LaunchScreen.storyboard */; };
 		E38487EB1C327E46008388A7 /* MyComicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38487EA1C327E46008388A7 /* MyComicTests.swift */; };
 		E38487F61C327E46008388A7 /* MyComicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38487F51C327E46008388A7 /* MyComicUITests.swift */; };
+		E3BFB6181C3AAFE9006BA02E /* ComicProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFB6171C3AAFE9006BA02E /* ComicProtocol.swift */; };
+		E3BFB61B1C3AB0A6006BA02E /* XkcdComic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFB61A1C3AB0A6006BA02E /* XkcdComic.swift */; };
 		E3D4094E1C395AA700FE5FA9 /* ComicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D4094D1C395AA700FE5FA9 /* ComicTableViewCell.swift */; };
 		E3D409501C395B1B00FE5FA9 /* ComicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3D4094F1C395B1B00FE5FA9 /* ComicTableViewCell.xib */; };
 		E3D409531C39656500FE5FA9 /* ComicDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3D409521C39656500FE5FA9 /* ComicDetailViewController.xib */; };
@@ -51,6 +53,8 @@
 		E38487F11C327E46008388A7 /* MyComicUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyComicUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E38487F51C327E46008388A7 /* MyComicUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyComicUITests.swift; sourceTree = "<group>"; };
 		E38487F71C327E46008388A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E3BFB6171C3AAFE9006BA02E /* ComicProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicProtocol.swift; sourceTree = "<group>"; };
+		E3BFB61A1C3AB0A6006BA02E /* XkcdComic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XkcdComic.swift; sourceTree = "<group>"; };
 		E3D4094D1C395AA700FE5FA9 /* ComicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicTableViewCell.swift; sourceTree = "<group>"; };
 		E3D4094F1C395B1B00FE5FA9 /* ComicTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComicTableViewCell.xib; sourceTree = "<group>"; };
 		E3D409521C39656500FE5FA9 /* ComicDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComicDetailViewController.xib; sourceTree = "<group>"; };
@@ -139,6 +143,8 @@
 		E3D4094B1C3951F100FE5FA9 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				E3BFB6171C3AAFE9006BA02E /* ComicProtocol.swift */,
+				E3BFB61A1C3AB0A6006BA02E /* XkcdComic.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -297,6 +303,8 @@
 			files = (
 				E38487D81C327E46008388A7 /* ComicOverviewController.swift in Sources */,
 				E3D4094E1C395AA700FE5FA9 /* ComicTableViewCell.swift in Sources */,
+				E3BFB6181C3AAFE9006BA02E /* ComicProtocol.swift in Sources */,
+				E3BFB61B1C3AB0A6006BA02E /* XkcdComic.swift in Sources */,
 				E38487D61C327E46008388A7 /* AppDelegate.swift in Sources */,
 				E3D409551C39657400FE5FA9 /* ComicDetailViewController.swift in Sources */,
 			);
