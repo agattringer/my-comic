@@ -28,6 +28,8 @@ class ComicOverviewController: UITableViewController{
 
     //settings button pressed
     func settingsButtonPressed(){
+        let fetcher = XkcdFetcher()
+        fetcher.fetchComics()
         NSLog(":::settings pressed:::")
     }
     

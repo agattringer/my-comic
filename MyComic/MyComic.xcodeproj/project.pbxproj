@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E32A6A7A1C40083A009FC2DC /* FetcherProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32A6A791C40083A009FC2DC /* FetcherProtocol.swift */; };
+		E32A6A7C1C400932009FC2DC /* XkcdFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32A6A7B1C400932009FC2DC /* XkcdFetcher.swift */; };
 		E38487D61C327E46008388A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38487D51C327E46008388A7 /* AppDelegate.swift */; };
 		E38487D81C327E46008388A7 /* ComicOverviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38487D71C327E46008388A7 /* ComicOverviewController.swift */; };
 		E38487DB1C327E46008388A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E38487D91C327E46008388A7 /* Main.storyboard */; };
@@ -40,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E32A6A791C40083A009FC2DC /* FetcherProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetcherProtocol.swift; sourceTree = "<group>"; };
+		E32A6A7B1C400932009FC2DC /* XkcdFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XkcdFetcher.swift; sourceTree = "<group>"; };
 		E38487D21C327E46008388A7 /* MyComic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyComic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E38487D51C327E46008388A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E38487D71C327E46008388A7 /* ComicOverviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicOverviewController.swift; sourceTree = "<group>"; };
@@ -86,6 +90,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E32A6A781C40082A009FC2DC /* fetcher */ = {
+			isa = PBXGroup;
+			children = (
+				E32A6A791C40083A009FC2DC /* FetcherProtocol.swift */,
+				E32A6A7B1C400932009FC2DC /* XkcdFetcher.swift */,
+			);
+			name = fetcher;
+			sourceTree = "<group>";
+		};
 		E38487C91C327E46008388A7 = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +122,7 @@
 		E38487D41C327E46008388A7 /* MyComic */ = {
 			isa = PBXGroup;
 			children = (
+				E32A6A781C40082A009FC2DC /* fetcher */,
 				E3D409511C39601200FE5FA9 /* assets */,
 				E3D4094C1C39520000FE5FA9 /* view */,
 				E3D4094B1C3951F100FE5FA9 /* model */,
@@ -303,10 +317,12 @@
 			files = (
 				E38487D81C327E46008388A7 /* ComicOverviewController.swift in Sources */,
 				E3D4094E1C395AA700FE5FA9 /* ComicTableViewCell.swift in Sources */,
+				E32A6A7A1C40083A009FC2DC /* FetcherProtocol.swift in Sources */,
 				E3BFB6181C3AAFE9006BA02E /* ComicProtocol.swift in Sources */,
 				E3BFB61B1C3AB0A6006BA02E /* XkcdComic.swift in Sources */,
 				E38487D61C327E46008388A7 /* AppDelegate.swift in Sources */,
 				E3D409551C39657400FE5FA9 /* ComicDetailViewController.swift in Sources */,
+				E32A6A7C1C400932009FC2DC /* XkcdFetcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

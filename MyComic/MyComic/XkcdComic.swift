@@ -8,7 +8,7 @@
 
 import Foundation
 
-class XkcdComic : ComicProtocol {
+class XkcdComic : NSObject, ComicProtocol {
     var comicName: String
     var comicType: ComicType
     
