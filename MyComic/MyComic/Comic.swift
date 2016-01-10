@@ -18,6 +18,10 @@ struct PropertyKey {
 }
 
 class Comic : NSObject, ComicProtocol, NSCoding {
+    static let DocumentsDirectory = NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
+    static let ArchiveURL = DocumentsDirectory.URLByAppendingPathComponent("comics")
+    
+    
     var comicName: String
     var comicType: ComicType = ComicType.Default
     var comicImage: UIImage = UIImage()
@@ -39,6 +43,10 @@ class Comic : NSObject, ComicProtocol, NSCoding {
     
     func getDescription() -> String{
         return "comic: " + comicName
+    }
+    
+    func saveToDisk() -> Bool {
+        return NSKeyedArchiver.archiveRootObject(self, toFile: Comic.ArchiveURL.path!)
     }
     
     //this initializer is required to conform to nscoding protocol
