@@ -25,13 +25,20 @@ class ComicOverviewController: UITableViewController, XkcdFetcherDelegate{
         //setup navbar
         let settingsButton = UIBarButtonItem(title: "\u{2699}", style: UIBarButtonItemStyle.Plain, target: self, action: "settingsButtonPressed")
         navigationItem.setLeftBarButtonItem(settingsButton, animated: false)
+        
+        //refresh control
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: "fetchComics", forControlEvents: UIControlEvents.ValueChanged)
     }
-
-    //settings button pressed
-    func settingsButtonPressed(){
+    
+    func fetchComics(){
         let fetcher = XkcdFetcher()
         fetcher.delegate = self
         fetcher.fetchComics()
+    }
+    
+    //settings button pressed
+    func settingsButtonPressed(){
         NSLog(":::settings pressed:::")
     }
     
@@ -84,6 +91,7 @@ class ComicOverviewController: UITableViewController, XkcdFetcherDelegate{
     
     func xkcdFetcherDidFinish(comics: [Comic]) {
         xkcdComics = comics
+        self.refreshControl?.endRefreshing()
         self.tableView.reloadData()
     }
 

@@ -72,6 +72,10 @@ class XkcdFetcher : NSObject, FetcherProtocol, NSXMLParserDelegate {
     }
     
     func parserDidEndDocument(parser: NSXMLParser) {
+        performSelectorOnMainThread("fetcherDidFinish", withObject: nil, waitUntilDone: false)
+    }
+    
+    func fetcherDidFinish(){
         delegate?.xkcdFetcherDidFinish(comicsArray)
     }
     
