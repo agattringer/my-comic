@@ -7,18 +7,21 @@
 //
 
 import Foundation
+import UIKit
 
-enum ComicType {
+enum ComicType : Int {
     case Xkcd
     case NerfNow
     case Dilbert
     case Explosm
+    case Default
 }
 
 protocol ComicProtocol {
     var comicName: String { get set }
     var comicType: ComicType { get set }
+    var comicImage: UIImage { get set }
+    var comicDescription: String { get set }
     
-    init(name:String)
     func getDescription() -> String
 }
