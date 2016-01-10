@@ -56,18 +56,14 @@ class Comic : NSObject, ComicProtocol, NSCoding {
         return "comic: " + comicName
     }
     
-    func saveToDisk() -> Bool {
-        return NSKeyedArchiver.archiveRootObject(self, toFile: Comic.ArchiveURL.path!)
-    }
-    
     //this initializer is required to conform to nscoding protocol
     required convenience init?(coder aDecoder: NSCoder) {
         let name = aDecoder.decodeObjectForKey(PropertyKey.nameKey) as! String
         let image = aDecoder.decodeObjectForKey(PropertyKey.imageKey) as! UIImage
-        let type = aDecoder.decodeObjectForKey(PropertyKey.typeKey) as! ComicType
+        let type = aDecoder.decodeIntegerForKey(PropertyKey.typeKey) as ComicType.RawValue
         let description = aDecoder.decodeObjectForKey(PropertyKey.descriptionKey) as! String
         
-        self.init(name: name, type: type, image: image, description: description)
+        self.init(name: name, type: ComicType(rawValue: type)!, image: image, description: description)
     }
     
     //encode properties

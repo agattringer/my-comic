@@ -29,6 +29,15 @@ class ComicOverviewController: UITableViewController, XkcdFetcherDelegate{
         //refresh control
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: "fetchComics", forControlEvents: UIControlEvents.ValueChanged)
+        
+        //check for saved comics
+        if let storedComics = loadStoredComics() {
+            xkcdComics += storedComics
+        }
+    }
+    
+    func loadStoredComics() -> [Comic]?{
+        return NSKeyedUnarchiver.unarchiveObjectWithFile(Comic.ArchiveURL.path!) as? [Comic]
     }
     
     func fetchComics(){
@@ -66,10 +75,8 @@ class ComicOverviewController: UITableViewController, XkcdFetcherDelegate{
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:ComicTableViewCell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as! ComicTableViewCell
         
-        cell.descriptionLabel.text = "This is comic number xy more text because testing is important"
-        
         if (!xkcdComics.isEmpty){
-            cell.descriptionLabel.text = xkcdComics[indexPath.row].comicName
+            cell.initWithComic(xkcdComics[indexPath.row])
         }
         
         return cell
@@ -82,9 +89,9 @@ class ComicOverviewController: UITableViewController, XkcdFetcherDelegate{
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        let comic = Comic(name: String(indexPath.row))
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! ComicTableViewCell
         
-        let comicDetail:ComicDetailViewController = ComicDetailViewController(comic: comic)
+        let comicDetail:ComicDetailViewController = ComicDetailViewController(comic: cell.comic)
         self.navigationController?.pushViewController(comicDetail, animated: true)
         
     }
@@ -92,6 +99,9 @@ class ComicOverviewController: UITableViewController, XkcdFetcherDelegate{
     func xkcdFetcherDidFinish(comics: [Comic]) {
         xkcdComics = comics
         self.refreshControl?.endRefreshing()
+        
+        NSKeyedArchiver.archiveRootObject(xkcdComics, toFile: Comic.ArchiveURL.path!)
+        
         self.tableView.reloadData()
     }
 

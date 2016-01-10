@@ -12,7 +12,15 @@ class ComicTableViewCell : UITableViewCell {
     //height constant for view construction
     static let comicCellHeight:CGFloat = 120;
     
-    @IBOutlet weak var tumbnailImageView: UIImageView!
+    @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
+    var comic: Comic!
+    
+    func initWithComic (comic: Comic){
+        self.comic = comic
+        self.thumbnailImageView.image = comic.comicImage
+        self.descriptionLabel.text = comic.comicName
+        
+    }
     
 }

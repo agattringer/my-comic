@@ -15,7 +15,7 @@ class ComicDetailViewController : UIViewController {
         self.comic = comic
         super.init(nibName: nil, bundle: nil)
         
-        self.title = comic.getDescription()
+        self.title = comic.comicName
     }
     
     //we are not nscoding compliant

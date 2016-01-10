@@ -25,5 +25,4 @@ protocol ComicProtocol {
     var comicImageSrc: String  { get set }
     
     func getDescription() -> String
-    func saveToDisk() -> Bool
 }

@@ -40,7 +40,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="descriptionLabel" destination="4zK-YC-6lP" id="KUh-hQ-eNr"/>
-                <outlet property="tumbnailImageView" destination="dLp-QB-V7X" id="jbU-mt-S16"/>
+                <outlet property="thumbnailImageView" destination="dLp-QB-V7X" id="4FO-EN-baq"/>
             </connections>
             <point key="canvasLocation" x="301" y="108"/>
         </tableViewCell>
