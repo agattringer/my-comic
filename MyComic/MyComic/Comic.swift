@@ -15,21 +15,31 @@ struct PropertyKey {
     static let imageKey = "image"
     static let typeKey = "type"
     static let descriptionKey = "description"
+    static let imageSrcKey = "imgSrc"
 }
 
 class Comic : NSObject, ComicProtocol, NSCoding {
     static let DocumentsDirectory = NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.URLByAppendingPathComponent("comics")
     
-    
+
     var comicName: String
     var comicType: ComicType = ComicType.Default
     var comicImage: UIImage = UIImage()
     var comicDescription: String
+    var comicImageSrc: String
+    
+    override init(){
+        self.comicName = ""
+        comicDescription = ""
+        comicImageSrc = ""
+        super.init()
+    }
     
     init(name: String){
         self.comicName = name
         comicDescription = ""
+        comicImageSrc = ""
         super.init()
     }
     
@@ -38,6 +48,7 @@ class Comic : NSObject, ComicProtocol, NSCoding {
         comicType = type
         comicImage = image
         comicDescription = description
+        comicImageSrc = ""
         super.init()
     }
     
@@ -65,5 +76,6 @@ class Comic : NSObject, ComicProtocol, NSCoding {
         aCoder.encodeObject(comicImage, forKey: PropertyKey.imageKey)
         aCoder.encodeInteger(comicType.rawValue , forKey: PropertyKey.typeKey)
         aCoder.encodeObject(comicDescription, forKey: PropertyKey.descriptionKey)
+        aCoder.encodeObject(comicImageSrc, forKey: PropertyKey.imageSrcKey)
     }
 }

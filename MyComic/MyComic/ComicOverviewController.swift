@@ -8,9 +8,10 @@
 
 import UIKit
 
-class ComicOverviewController: UITableViewController{
+class ComicOverviewController: UITableViewController, XkcdFetcherDelegate{
 
     let cellReuseIdentifier = "ComicCell"
+    var xkcdComics: [Comic] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,16 +30,17 @@ class ComicOverviewController: UITableViewController{
     //settings button pressed
     func settingsButtonPressed(){
         let fetcher = XkcdFetcher()
+        fetcher.delegate = self
         fetcher.fetchComics()
         NSLog(":::settings pressed:::")
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 3
+        return 1
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return xkcdComics.count
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -59,6 +61,10 @@ class ComicOverviewController: UITableViewController{
         
         cell.descriptionLabel.text = "This is comic number xy more text because testing is important"
         
+        if (!xkcdComics.isEmpty){
+            cell.descriptionLabel.text = xkcdComics[indexPath.row].comicName
+        }
+        
         return cell
     }
     
@@ -69,11 +75,16 @@ class ComicOverviewController: UITableViewController{
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        let comic = XkcdComic(name: String(indexPath.row))
+        let comic = Comic(name: String(indexPath.row))
         
         let comicDetail:ComicDetailViewController = ComicDetailViewController(comic: comic)
         self.navigationController?.pushViewController(comicDetail, animated: true)
         
+    }
+    
+    func xkcdFetcherDidFinish(comics: [Comic]) {
+        xkcdComics = comics
+        self.tableView.reloadData()
     }
 
 }

@@ -6,18 +6,26 @@
 //  Copyright © 2016 Alexander Gattringer. All rights reserved.
 //
 
+import UIKit
 import Foundation
 
+protocol XkcdFetcherDelegate {
+    func xkcdFetcherDidFinish(comics: [Comic])
+}
+
 class XkcdFetcher : NSObject, FetcherProtocol, NSXMLParserDelegate {
+    //URL for the xkcd rss feed
     let urlToFetch: NSURL = NSURL(string:"https://xkcd.com/rss.xml")!
     
+    var delegate: XkcdFetcherDelegate?
+    
     var xmlParser: NSXMLParser!
-    var comicTitle: String!
-    var comicLink: String!
-    var comicDescription: String!
-    var currentParsedComic: String! = String()
-    var comicDict: [String:String]! = Dictionary()
-    var comicsArray: [Dictionary<String, String>]! = Array()
+    var insideItem: Bool = false
+    var element: String!
+    
+    var currentComic: Comic = Comic(name: "")
+    var comicsArray: [Comic]! = Array()
+    
     
     func fetchComics(){
         performSelectorInBackground("startParser", withObject: nil)
@@ -32,6 +40,69 @@ class XkcdFetcher : NSObject, FetcherProtocol, NSXMLParserDelegate {
     
     func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         
-        NSLog(elementName)
+        element = elementName
+        
+        if (elementName == "item"){
+            insideItem = true
+            return
+        }
+        
     }
+    
+    func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+        
+        //handle end of item
+        if (elementName == "item"){
+            comicsArray.append(currentComic)
+            currentComic = Comic(name:"")
+            insideItem = false
+            return
+        }
+    }
+    
+    func parser(parser: NSXMLParser, foundCharacters string: String) {
+        if (insideItem && element == "title"){
+            currentComic.comicName = string
+            return
+        }
+        
+        if (insideItem && string.characters.count > 1 && element == "description"){
+            parseImgSrcAndDescription(string)
+        }
+    }
+    
+    func parserDidEndDocument(parser: NSXMLParser) {
+        delegate?.xkcdFetcherDidFinish(comicsArray)
+    }
+    
+    func parseImgSrcAndDescription(text: String){
+        //regex for everything in double quotes
+        let regex = "\"(?:\\.|(\\\\\\\")|[^\\\"\"\\n])*\""
+        
+        let matches = matchesForRegexInText(regex, text: text)
+        
+        //remove quote chars
+        let imgSrc = matches[0].stringByReplacingOccurrencesOfString("\"", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        
+        let description = matches[1].stringByReplacingOccurrencesOfString("\"", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        
+        currentComic.comicImageSrc = imgSrc
+        currentComic.comicDescription = description
+        currentComic.comicType = ComicType.Xkcd
+    }
+    
+    func matchesForRegexInText(regex: String!, text: String!) -> [String] {
+        
+        do {
+            let regex = try NSRegularExpression(pattern: regex, options: [])
+            let nsString = text as NSString
+            let results = regex.matchesInString(text,
+                options: [], range: NSMakeRange(0, nsString.length))
+            return results.map { nsString.substringWithRange($0.range)}
+        } catch let error as NSError {
+            print("invalid regex: \(error.localizedDescription)")
+            return []
+        }
+    }
+    
 }
