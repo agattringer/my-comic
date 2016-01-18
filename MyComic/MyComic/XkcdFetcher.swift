@@ -22,9 +22,10 @@ class XkcdFetcher : NSObject, FetcherProtocol, NSXMLParserDelegate {
     var xmlParser: NSXMLParser!
     var insideItem: Bool = false
     var element: String!
+    var stringInElement: String = String()
     
     var currentComic: Comic = Comic(name: "")
-    var comicsArray: [Comic]! = Array()
+    var comicsArray: [Comic] = Array()
     
     
     func fetchComics(){
@@ -58,6 +59,12 @@ class XkcdFetcher : NSObject, FetcherProtocol, NSXMLParserDelegate {
             insideItem = false
             return
         }
+        
+        if (insideItem && elementName == "description"){
+            parseImgSrcAndDescription(stringInElement)
+            stringInElement = ""
+            return
+        }
     }
     
     func parser(parser: NSXMLParser, foundCharacters string: String) {
@@ -67,7 +74,7 @@ class XkcdFetcher : NSObject, FetcherProtocol, NSXMLParserDelegate {
         }
         
         if (insideItem && string.characters.count > 1 && element == "description"){
-            parseImgSrcAndDescription(string)
+            stringInElement.appendContentsOf(string)
         }
     }
     
