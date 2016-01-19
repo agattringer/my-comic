@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Haneke
 
 class ComicTableViewCell : UITableViewCell {
     //height constant for view construction
@@ -18,7 +19,7 @@ class ComicTableViewCell : UITableViewCell {
     
     func initWithComic (comic: Comic){
         self.comic = comic
-        self.thumbnailImageView.image = comic.comicImage
+        self.thumbnailImageView.hnk_setImageFromURL(comic.comicImageSrc)
         self.descriptionLabel.text = comic.comicName
         
     }

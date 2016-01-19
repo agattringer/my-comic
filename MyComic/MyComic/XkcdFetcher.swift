@@ -93,11 +93,14 @@ class XkcdFetcher : NSObject, FetcherProtocol, NSXMLParserDelegate {
         let matches = matchesForRegexInText(regex, text: text)
         
         //remove quote chars
-        let imgSrc = matches[0].stringByReplacingOccurrencesOfString("\"", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        var imgSrc = matches[0].stringByReplacingOccurrencesOfString("\"", withString: "")
         
-        let description = matches[1].stringByReplacingOccurrencesOfString("\"", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        let description = matches[1].stringByReplacingOccurrencesOfString("\"", withString: "")
         
-        currentComic.comicImageSrc = imgSrc
+        //replace http with https as with http ios blocks communication
+        imgSrc = imgSrc.stringByReplacingOccurrencesOfString("http", withString: "https")
+        
+        currentComic.comicImageSrc = NSURL(string:imgSrc)!
         currentComic.comicDescription = description
         currentComic.comicType = ComicType.Xkcd
     }

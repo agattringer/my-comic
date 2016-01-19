@@ -22,7 +22,7 @@ protocol ComicProtocol {
     var comicType: ComicType { get set }
     var comicImage: UIImage { get set }
     var comicDescription: String { get set }
-    var comicImageSrc: String  { get set }
+    var comicImageSrc: NSURL  { get set }
     
     func getDescription() -> String
 }

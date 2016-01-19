@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import Haneke
 
 class ComicDetailViewController : UIViewController {
     var comic: ComicProtocol
+    @IBOutlet weak var comicImageView: UIImageView!
     
     init(comic:ComicProtocol){
         self.comic = comic
@@ -24,6 +26,6 @@ class ComicDetailViewController : UIViewController {
     }
     
     override func viewDidLoad() {
-        
+        comicImageView.hnk_setImageFromURL(comic.comicImageSrc)
     }
 }
