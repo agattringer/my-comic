@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ComicDetailViewController" customModule="MyComic" customModuleProvider="target">
             <connections>
                 <outlet property="comicImageView" destination="Cph-L9-bwH" id="j5M-ST-wOr"/>
+                <outlet property="scrollView" destination="FiZ-kz-Hja" id="kQz-HH-M4L"/>
                 <outlet property="view" destination="169-WJ-Zh7" id="0UZ-Gw-02L"/>
             </connections>
         </placeholder>
@@ -16,48 +17,77 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cph-L9-bwH">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FiZ-kz-Hja">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cph-L9-bwH">
+                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </imageView>
+                    </subviews>
                     <constraints>
-                        <constraint firstAttribute="height" constant="323" id="6x8-In-KbH"/>
+                        <constraint firstAttribute="bottom" secondItem="Cph-L9-bwH" secondAttribute="bottom" id="UsT-ng-XTM"/>
+                        <constraint firstItem="Cph-L9-bwH" firstAttribute="centerY" secondItem="FiZ-kz-Hja" secondAttribute="centerY" id="V4S-fs-Gqx"/>
+                        <constraint firstItem="Cph-L9-bwH" firstAttribute="centerX" secondItem="FiZ-kz-Hja" secondAttribute="centerX" id="X6c-VJ-smN"/>
+                        <constraint firstItem="Cph-L9-bwH" firstAttribute="top" secondItem="FiZ-kz-Hja" secondAttribute="top" id="bZL-x6-UwR"/>
+                        <constraint firstItem="Cph-L9-bwH" firstAttribute="leading" secondItem="FiZ-kz-Hja" secondAttribute="leading" id="oYW-bt-Z3m"/>
+                        <constraint firstAttribute="trailing" secondItem="Cph-L9-bwH" secondAttribute="trailing" id="qup-E9-UoE"/>
                     </constraints>
                     <variation key="default">
+                        <mask key="subviews">
+                            <exclude reference="Cph-L9-bwH"/>
+                        </mask>
                         <mask key="constraints">
-                            <exclude reference="6x8-In-KbH"/>
+                            <exclude reference="UsT-ng-XTM"/>
+                            <exclude reference="V4S-fs-Gqx"/>
+                            <exclude reference="X6c-VJ-smN"/>
+                            <exclude reference="bZL-x6-UwR"/>
+                            <exclude reference="oYW-bt-Z3m"/>
+                            <exclude reference="qup-E9-UoE"/>
                         </mask>
                     </variation>
                     <variation key="heightClass=regular-widthClass=compact">
+                        <mask key="subviews">
+                            <include reference="Cph-L9-bwH"/>
+                        </mask>
                         <mask key="constraints">
-                            <include reference="6x8-In-KbH"/>
+                            <include reference="UsT-ng-XTM"/>
+                            <include reference="V4S-fs-Gqx"/>
+                            <include reference="X6c-VJ-smN"/>
+                            <include reference="bZL-x6-UwR"/>
+                            <include reference="oYW-bt-Z3m"/>
+                            <include reference="qup-E9-UoE"/>
                         </mask>
                     </variation>
-                </imageView>
+                </scrollView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="Cph-L9-bwH" firstAttribute="leading" secondItem="169-WJ-Zh7" secondAttribute="leading" id="ZP1-z8-Kmk"/>
-                <constraint firstAttribute="trailing" secondItem="Cph-L9-bwH" secondAttribute="trailing" id="ZYE-rJ-lyd"/>
-                <constraint firstItem="Cph-L9-bwH" firstAttribute="centerY" secondItem="169-WJ-Zh7" secondAttribute="centerY" id="fpZ-OZ-4Iy"/>
+                <constraint firstItem="FiZ-kz-Hja" firstAttribute="top" secondItem="169-WJ-Zh7" secondAttribute="top" id="9d9-Dn-QvX"/>
+                <constraint firstItem="FiZ-kz-Hja" firstAttribute="leading" secondItem="169-WJ-Zh7" secondAttribute="leading" id="N1h-pD-9Fl"/>
+                <constraint firstAttribute="bottom" secondItem="FiZ-kz-Hja" secondAttribute="bottom" id="WBg-Ed-zOn"/>
+                <constraint firstAttribute="trailing" secondItem="FiZ-kz-Hja" secondAttribute="trailing" id="wZu-qT-faJ"/>
             </constraints>
             <variation key="default">
                 <mask key="subviews">
-                    <exclude reference="Cph-L9-bwH"/>
+                    <exclude reference="FiZ-kz-Hja"/>
                 </mask>
                 <mask key="constraints">
-                    <exclude reference="ZP1-z8-Kmk"/>
-                    <exclude reference="ZYE-rJ-lyd"/>
-                    <exclude reference="fpZ-OZ-4Iy"/>
+                    <exclude reference="9d9-Dn-QvX"/>
+                    <exclude reference="N1h-pD-9Fl"/>
+                    <exclude reference="WBg-Ed-zOn"/>
+                    <exclude reference="wZu-qT-faJ"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
                 <mask key="subviews">
-                    <include reference="Cph-L9-bwH"/>
+                    <include reference="FiZ-kz-Hja"/>
                 </mask>
                 <mask key="constraints">
-                    <include reference="ZP1-z8-Kmk"/>
-                    <include reference="ZYE-rJ-lyd"/>
-                    <include reference="fpZ-OZ-4Iy"/>
+                    <include reference="9d9-Dn-QvX"/>
+                    <include reference="N1h-pD-9Fl"/>
+                    <include reference="WBg-Ed-zOn"/>
+                    <include reference="wZu-qT-faJ"/>
                 </mask>
             </variation>
         </view>
