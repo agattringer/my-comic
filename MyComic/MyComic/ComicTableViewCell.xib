@@ -16,15 +16,15 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="4zK-YC-6lP" userLabel="description">
-                        <rect key="frame" x="146" y="8" width="166" height="103.5"/>
+                        <rect key="frame" x="201" y="8" width="111" height="103.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dLp-QB-V7X" userLabel="thumbnail">
-                        <rect key="frame" x="8" y="8" width="130" height="103.5"/>
+                        <rect key="frame" x="28" y="8" width="137" height="103.5"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="130" id="kh7-8S-9Ne"/>
+                            <constraint firstAttribute="width" constant="137" id="kh7-8S-9Ne"/>
                         </constraints>
                     </imageView>
                 </subviews>
@@ -32,8 +32,8 @@
                     <constraint firstItem="4zK-YC-6lP" firstAttribute="trailing" secondItem="Kf9-v2-vzh" secondAttribute="trailingMargin" id="Agt-2O-iYn"/>
                     <constraint firstItem="dLp-QB-V7X" firstAttribute="bottom" secondItem="Kf9-v2-vzh" secondAttribute="bottomMargin" id="MUf-Gq-bA7"/>
                     <constraint firstItem="dLp-QB-V7X" firstAttribute="top" secondItem="Kf9-v2-vzh" secondAttribute="topMargin" id="SPy-Qy-GNG"/>
-                    <constraint firstItem="dLp-QB-V7X" firstAttribute="leading" secondItem="Kf9-v2-vzh" secondAttribute="leadingMargin" id="csc-qt-e7T"/>
-                    <constraint firstItem="4zK-YC-6lP" firstAttribute="leading" secondItem="dLp-QB-V7X" secondAttribute="trailing" constant="8" id="hHa-t6-GAx"/>
+                    <constraint firstItem="dLp-QB-V7X" firstAttribute="leading" secondItem="Kf9-v2-vzh" secondAttribute="leadingMargin" constant="20" id="csc-qt-e7T"/>
+                    <constraint firstItem="4zK-YC-6lP" firstAttribute="leading" secondItem="dLp-QB-V7X" secondAttribute="trailing" constant="36" id="hHa-t6-GAx"/>
                     <constraint firstItem="4zK-YC-6lP" firstAttribute="top" secondItem="Kf9-v2-vzh" secondAttribute="topMargin" id="jyz-oM-cCm"/>
                     <constraint firstItem="4zK-YC-6lP" firstAttribute="bottom" secondItem="Kf9-v2-vzh" secondAttribute="bottomMargin" id="qfG-wA-Quw"/>
                 </constraints>
