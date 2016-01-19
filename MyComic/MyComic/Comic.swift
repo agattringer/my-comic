@@ -15,7 +15,7 @@ struct PropertyKey {
     static let imageKey = "image"
     static let typeKey = "type"
     static let descriptionKey = "description"
-    static let imageSrcKey = "imgSrc"
+    static let urlKey = "imageSrc"
 }
 
 class Comic : NSObject, ComicProtocol, NSCoding {
@@ -43,12 +43,12 @@ class Comic : NSObject, ComicProtocol, NSCoding {
         super.init()
     }
     
-    init(name: String, type: ComicType, image: UIImage, description: String) {
+    init(name: String, type: ComicType, image: UIImage, description: String, url: NSURL) {
         comicName = name
         comicType = type
         comicImage = image
         comicDescription = description
-        comicImageSrc = NSURL(string: "")!
+        comicImageSrc = url
         super.init()
     }
     
@@ -62,8 +62,9 @@ class Comic : NSObject, ComicProtocol, NSCoding {
         let image = aDecoder.decodeObjectForKey(PropertyKey.imageKey) as! UIImage
         let type = aDecoder.decodeIntegerForKey(PropertyKey.typeKey) as ComicType.RawValue
         let description = aDecoder.decodeObjectForKey(PropertyKey.descriptionKey) as! String
+        let url = aDecoder.decodeObjectForKey(PropertyKey.urlKey) as! NSURL
         
-        self.init(name: name, type: ComicType(rawValue: type)!, image: image, description: description)
+        self.init(name: name, type: ComicType(rawValue: type)!, image: image, description: description, url: url)
     }
     
     //encode properties
@@ -72,6 +73,6 @@ class Comic : NSObject, ComicProtocol, NSCoding {
         aCoder.encodeObject(comicImage, forKey: PropertyKey.imageKey)
         aCoder.encodeInteger(comicType.rawValue , forKey: PropertyKey.typeKey)
         aCoder.encodeObject(comicDescription, forKey: PropertyKey.descriptionKey)
-        aCoder.encodeObject(comicImageSrc, forKey: PropertyKey.imageSrcKey)
+        aCoder.encodeObject(comicImageSrc, forKey: PropertyKey.urlKey)
     }
 }
