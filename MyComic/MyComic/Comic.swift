@@ -27,19 +27,19 @@ class Comic : NSObject, ComicProtocol, NSCoding {
     var comicType: ComicType = ComicType.Default
     var comicImage: UIImage = UIImage()
     var comicDescription: String
-    var comicImageSrc: String
+    var comicImageSrc: NSURL
     
     override init(){
         self.comicName = ""
         comicDescription = ""
-        comicImageSrc = ""
+        comicImageSrc = NSURL(string: "")!
         super.init()
     }
     
     init(name: String){
         self.comicName = name
         comicDescription = ""
-        comicImageSrc = ""
+        comicImageSrc = NSURL(string: "")!
         super.init()
     }
     
@@ -48,7 +48,7 @@ class Comic : NSObject, ComicProtocol, NSCoding {
         comicType = type
         comicImage = image
         comicDescription = description
-        comicImageSrc = ""
+        comicImageSrc = NSURL(string: "")!
         super.init()
     }
     
