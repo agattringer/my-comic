@@ -17,11 +17,17 @@
 		E38487E01C327E46008388A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E38487DE1C327E46008388A7 /* LaunchScreen.storyboard */; };
 		E38487EB1C327E46008388A7 /* MyComicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38487EA1C327E46008388A7 /* MyComicTests.swift */; };
 		E38487F61C327E46008388A7 /* MyComicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38487F51C327E46008388A7 /* MyComicUITests.swift */; };
+		E3B222281C579C0300202028 /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B222231C579C0300202028 /* TFHpple.m */; };
+		E3B222291C579C0300202028 /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B222251C579C0300202028 /* TFHppleElement.m */; };
+		E3B2222A1C579C0300202028 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B222271C579C0300202028 /* XPathQuery.m */; };
+		E3B2222D1C579F5C00202028 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E3B2222B1C579F5C00202028 /* libxml2.2.tbd */; };
+		E3B2222E1C579F5C00202028 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E3B2222C1C579F5C00202028 /* libxml2.tbd */; };
 		E3BFB6181C3AAFE9006BA02E /* ComicProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFB6171C3AAFE9006BA02E /* ComicProtocol.swift */; };
 		E3D4094E1C395AA700FE5FA9 /* ComicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D4094D1C395AA700FE5FA9 /* ComicTableViewCell.swift */; };
 		E3D409501C395B1B00FE5FA9 /* ComicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3D4094F1C395B1B00FE5FA9 /* ComicTableViewCell.xib */; };
 		E3D409531C39656500FE5FA9 /* ComicDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3D409521C39656500FE5FA9 /* ComicDetailViewController.xib */; };
 		E3D409551C39657400FE5FA9 /* ComicDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D409541C39657400FE5FA9 /* ComicDetailViewController.swift */; };
+		E3E004D91C577CBC009810CB /* ExplosmFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E004D81C577CBC009810CB /* ExplosmFetcher.swift */; };
 		E3F53F551C4E3EBD00BB2849 /* Haneke.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3F53F4A1C4E3E3200BB2849 /* Haneke.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -107,11 +113,21 @@
 		E38487F11C327E46008388A7 /* MyComicUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyComicUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E38487F51C327E46008388A7 /* MyComicUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyComicUITests.swift; sourceTree = "<group>"; };
 		E38487F71C327E46008388A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E3B222211C579C0300202028 /* MyComic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyComic-Bridging-Header.h"; sourceTree = "<group>"; };
+		E3B222221C579C0300202028 /* TFHpple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHpple.h; sourceTree = "<group>"; };
+		E3B222231C579C0300202028 /* TFHpple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHpple.m; sourceTree = "<group>"; };
+		E3B222241C579C0300202028 /* TFHppleElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHppleElement.h; sourceTree = "<group>"; };
+		E3B222251C579C0300202028 /* TFHppleElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHppleElement.m; sourceTree = "<group>"; };
+		E3B222261C579C0300202028 /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
+		E3B222271C579C0300202028 /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
+		E3B2222B1C579F5C00202028 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
+		E3B2222C1C579F5C00202028 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		E3BFB6171C3AAFE9006BA02E /* ComicProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicProtocol.swift; sourceTree = "<group>"; };
 		E3D4094D1C395AA700FE5FA9 /* ComicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicTableViewCell.swift; sourceTree = "<group>"; };
 		E3D4094F1C395B1B00FE5FA9 /* ComicTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComicTableViewCell.xib; sourceTree = "<group>"; };
 		E3D409521C39656500FE5FA9 /* ComicDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComicDetailViewController.xib; sourceTree = "<group>"; };
 		E3D409541C39657400FE5FA9 /* ComicDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicDetailViewController.swift; sourceTree = "<group>"; };
+		E3E004D81C577CBC009810CB /* ExplosmFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplosmFetcher.swift; sourceTree = "<group>"; };
 		E3F53F421C4E3E3200BB2849 /* Haneke.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Haneke.xcodeproj; path = "../../../Downloads/HanekeSwift-master/Haneke.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,6 +136,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3B2222D1C579F5C00202028 /* libxml2.2.tbd in Frameworks */,
+				E3B2222E1C579F5C00202028 /* libxml2.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,6 +163,7 @@
 			children = (
 				E32A6A791C40083A009FC2DC /* FetcherProtocol.swift */,
 				E32A6A7B1C400932009FC2DC /* XkcdFetcher.swift */,
+				E3E004D81C577CBC009810CB /* ExplosmFetcher.swift */,
 			);
 			name = fetcher;
 			sourceTree = "<group>";
@@ -152,6 +171,9 @@
 		E38487C91C327E46008388A7 = {
 			isa = PBXGroup;
 			children = (
+				E3B2222B1C579F5C00202028 /* libxml2.2.tbd */,
+				E3B2222C1C579F5C00202028 /* libxml2.tbd */,
+				E3B222201C579BEF00202028 /* libs */,
 				E38487D41C327E46008388A7 /* MyComic */,
 				E38487E91C327E46008388A7 /* MyComicTests */,
 				E38487F41C327E46008388A7 /* MyComicUITests */,
@@ -203,6 +225,21 @@
 				E38487F71C327E46008388A7 /* Info.plist */,
 			);
 			path = MyComicUITests;
+			sourceTree = "<group>";
+		};
+		E3B222201C579BEF00202028 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				E3B222221C579C0300202028 /* TFHpple.h */,
+				E3B222231C579C0300202028 /* TFHpple.m */,
+				E3B222241C579C0300202028 /* TFHppleElement.h */,
+				E3B222251C579C0300202028 /* TFHppleElement.m */,
+				E3B222261C579C0300202028 /* XPathQuery.h */,
+				E3B222271C579C0300202028 /* XPathQuery.m */,
+				E3B222211C579C0300202028 /* MyComic-Bridging-Header.h */,
+			);
+			name = libs;
+			path = MyComic;
 			sourceTree = "<group>";
 		};
 		E3D4094B1C3951F100FE5FA9 /* model */ = {
@@ -307,7 +344,7 @@
 		E38487CA1C327E46008388A7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0710;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Alexander Gattringer";
 				TargetAttributes = {
@@ -419,11 +456,15 @@
 				E38487D81C327E46008388A7 /* ComicOverviewController.swift in Sources */,
 				E3D4094E1C395AA700FE5FA9 /* ComicTableViewCell.swift in Sources */,
 				E32A6A7A1C40083A009FC2DC /* FetcherProtocol.swift in Sources */,
+				E3E004D91C577CBC009810CB /* ExplosmFetcher.swift in Sources */,
 				E3BFB6181C3AAFE9006BA02E /* ComicProtocol.swift in Sources */,
+				E3B222281C579C0300202028 /* TFHpple.m in Sources */,
 				E35A21A31C42933C0019FA8F /* Comic.swift in Sources */,
 				E38487D61C327E46008388A7 /* AppDelegate.swift in Sources */,
 				E3D409551C39657400FE5FA9 /* ComicDetailViewController.swift in Sources */,
 				E32A6A7C1C400932009FC2DC /* XkcdFetcher.swift in Sources */,
+				E3B2222A1C579C0300202028 /* XPathQuery.m in Sources */,
+				E3B222291C579C0300202028 /* TFHppleElement.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,15 +609,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"HEADER_SEARCH_PATHS[arch=*]" = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = MyComic/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 9.1;
+				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_BUNDLE_IDENTIFIER = at.fhhooe.mc.gattringer.MyComic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "MyComic/MyComic-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -584,15 +630,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"HEADER_SEARCH_PATHS[arch=*]" = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = MyComic/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 9.1;
+				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_BUNDLE_IDENTIFIER = at.fhhooe.mc.gattringer.MyComic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "MyComic/MyComic-Bridging-Header.h";
 			};
 			name = Release;
 		};
