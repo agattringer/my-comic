@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ComicOverviewController: UITableViewController, XkcdFetcherDelegate{
+class ComicOverviewController: UITableViewController, XkcdFetcherDelegate, ExplosmFetcherDelegate{
 
     let cellReuseIdentifier = "ComicCell"
     var xkcdComics: [Comic] = []
@@ -44,6 +44,10 @@ class ComicOverviewController: UITableViewController, XkcdFetcherDelegate{
         let fetcher = XkcdFetcher()
         fetcher.delegate = self
         fetcher.fetchComics()
+        
+        let explosmFetcher = ExplosmFetcher()
+        explosmFetcher.delegate = self
+        explosmFetcher.fetchComics()
     }
     
     //settings button pressed
@@ -103,6 +107,10 @@ class ComicOverviewController: UITableViewController, XkcdFetcherDelegate{
         NSKeyedArchiver.archiveRootObject(xkcdComics, toFile: Comic.ArchiveURL.path!)
         
         self.tableView.reloadData()
+    }
+    
+    func explosmFetcherDidFinish(comics: [Comic]) {
+        
     }
 
 }
