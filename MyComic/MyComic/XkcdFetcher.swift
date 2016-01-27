@@ -29,6 +29,7 @@ class XkcdFetcher : NSObject, FetcherProtocol, NSXMLParserDelegate {
     
     
     func fetchComics(){
+        comicsArray.removeAll()
         performSelectorInBackground("startParser", withObject: nil)
     }
     
@@ -103,20 +104,6 @@ class XkcdFetcher : NSObject, FetcherProtocol, NSXMLParserDelegate {
         currentComic.comicImageSrc = NSURL(string:imgSrc)!
         currentComic.comicDescription = description
         currentComic.comicType = ComicType.Xkcd
-    }
-    
-    func matchesForRegexInText(regex: String!, text: String!) -> [String] {
-        
-        do {
-            let regex = try NSRegularExpression(pattern: regex, options: [])
-            let nsString = text as NSString
-            let results = regex.matchesInString(text,
-                options: [], range: NSMakeRange(0, nsString.length))
-            return results.map { nsString.substringWithRange($0.range)}
-        } catch let error as NSError {
-            print("invalid regex: \(error.localizedDescription)")
-            return []
-        }
     }
     
 }

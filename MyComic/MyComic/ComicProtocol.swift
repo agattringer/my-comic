@@ -20,7 +20,6 @@ enum ComicType : Int {
 protocol ComicProtocol {
     var comicName: String { get set }
     var comicType: ComicType { get set }
-    var comicImage: UIImage { get set }
     var comicDescription: String { get set }
     var comicImageSrc: NSURL  { get set }
     
