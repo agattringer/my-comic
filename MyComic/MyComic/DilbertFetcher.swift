@@ -51,6 +51,10 @@ class DilbertFetcher : NSObject, FetcherProtocol, NSXMLParserDelegate {
         //handle end of item
         if (elementName == "item"){
             comicsArray.append(currentComic)
+            if (comicsArray.count > 3) {
+                finishFetch()
+                return
+            }
             currentComic = Comic(name:"")
             insideItem = false
             return
@@ -63,6 +67,17 @@ class DilbertFetcher : NSObject, FetcherProtocol, NSXMLParserDelegate {
         }
     }
     
+    func parser(parser: NSXMLParser, foundCharacters string: String) {
+        if (insideItem && element == "title" && currentComic.comicName == ""){
+            currentComic.comicName = string
+            return
+        }
+        
+        if (insideItem && string.characters.count > 1 && element == "description"){
+            stringInElement.appendContentsOf(string)
+        }
+    }
+    
     func parseImgSrc(text: String){
         //regex for everything in double quotes
         let regex = "\"(?:\\.|(\\\\\\\")|[^\\\"\"\\n])*\""
@@ -70,17 +85,18 @@ class DilbertFetcher : NSObject, FetcherProtocol, NSXMLParserDelegate {
         let matches = matchesForRegexInText(regex, text: text)
         
         //remove quote chars
-        var imgSrc = matches[0].stringByReplacingOccurrencesOfString("\"", withString: "")
-        
-        //replace http with https as with http ios blocks communication
-        imgSrc = imgSrc.stringByReplacingOccurrencesOfString("http", withString: "https")
+        let imgSrc = matches[0].stringByReplacingOccurrencesOfString("\"", withString: "")
         
         currentComic.comicImageSrc = NSURL(string:imgSrc)!
-        currentComic.comicDescription = description
         currentComic.comicType = ComicType.Dilbert
     }
     
-    func fetcherDidFinish() {
-        
+    func finishFetch(){
+        performSelectorOnMainThread("fetcherDidFinish", withObject: nil, waitUntilDone: false)
+    }
+    
+    func fetcherDidFinish(){
+        xmlParser.abortParsing()
+        delegate?.dilbertFetcherDidFinish(comicsArray)
     }
 }

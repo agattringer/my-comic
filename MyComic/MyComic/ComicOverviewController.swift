@@ -8,11 +8,12 @@
 
 import UIKit
 
-class ComicOverviewController: UITableViewController, XkcdFetcherDelegate, ExplosmFetcherDelegate{
+class ComicOverviewController: UITableViewController, XkcdFetcherDelegate, ExplosmFetcherDelegate, DilbertFetcherDelegate{
 
     let cellReuseIdentifier = "ComicCell"
     var xkcdComics: [Comic] = []
     var explosmComics: [Comic] = []
+    var dilbertComics: [Comic] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +50,10 @@ class ComicOverviewController: UITableViewController, XkcdFetcherDelegate, Explo
         let explosmFetcher = ExplosmFetcher()
         explosmFetcher.delegate = self
         explosmFetcher.fetchComics()
+        
+        let dilbertFetcher = DilbertFetcher()
+        dilbertFetcher.delegate = self
+        dilbertFetcher.fetchComics()
     }
     
     //settings button pressed
@@ -57,7 +62,7 @@ class ComicOverviewController: UITableViewController, XkcdFetcherDelegate, Explo
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -71,7 +76,7 @@ class ComicOverviewController: UITableViewController, XkcdFetcherDelegate, Explo
         case 1:
             return "Cyanide & Happiness"
         case 2:
-            return "xmbc"
+            return "Dilbert"
         default:
             return "error"
         }
@@ -89,6 +94,10 @@ class ComicOverviewController: UITableViewController, XkcdFetcherDelegate, Explo
         case 1:
             if (!explosmComics.isEmpty){
                 cell.initWithComic(explosmComics[indexPath.row])
+            }
+        case 2:
+            if (!dilbertComics.isEmpty){
+                cell.initWithComic(dilbertComics[indexPath.row])
             }
         default:
             print("no comics error")
@@ -123,6 +132,12 @@ class ComicOverviewController: UITableViewController, XkcdFetcherDelegate, Explo
     
     func explosmFetcherDidFinish(comics: [Comic]) {
         explosmComics = comics
+        self.refreshControl?.endRefreshing()
+        self.tableView.reloadData()
+    }
+    
+    func dilbertFetcherDidFinish(comics: [Comic]) {
+        dilbertComics = comics
         self.refreshControl?.endRefreshing()
         self.tableView.reloadData()
     }
