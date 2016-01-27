@@ -11,6 +11,7 @@ import Foundation
 protocol FetcherProtocol {
     var comicsArray: [Comic] { get set }
     func fetchComics()
+    func fetcherDidFinish()
 }
 
 extension FetcherProtocol {

@@ -29,6 +29,7 @@
 		E3D409551C39657400FE5FA9 /* ComicDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D409541C39657400FE5FA9 /* ComicDetailViewController.swift */; };
 		E3E004D91C577CBC009810CB /* ExplosmFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E004D81C577CBC009810CB /* ExplosmFetcher.swift */; };
 		E3F53F551C4E3EBD00BB2849 /* Haneke.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3F53F4A1C4E3E3200BB2849 /* Haneke.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E3F93CF01C58E5CC00BB2308 /* DilbertFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F93CEF1C58E5CC00BB2308 /* DilbertFetcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +130,7 @@
 		E3D409541C39657400FE5FA9 /* ComicDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicDetailViewController.swift; sourceTree = "<group>"; };
 		E3E004D81C577CBC009810CB /* ExplosmFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplosmFetcher.swift; sourceTree = "<group>"; };
 		E3F53F421C4E3E3200BB2849 /* Haneke.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Haneke.xcodeproj; path = "../../../Downloads/HanekeSwift-master/Haneke.xcodeproj"; sourceTree = "<group>"; };
+		E3F93CEF1C58E5CC00BB2308 /* DilbertFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DilbertFetcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 				E32A6A791C40083A009FC2DC /* FetcherProtocol.swift */,
 				E32A6A7B1C400932009FC2DC /* XkcdFetcher.swift */,
 				E3E004D81C577CBC009810CB /* ExplosmFetcher.swift */,
+				E3F93CEF1C58E5CC00BB2308 /* DilbertFetcher.swift */,
 			);
 			name = fetcher;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 				E3E004D91C577CBC009810CB /* ExplosmFetcher.swift in Sources */,
 				E3BFB6181C3AAFE9006BA02E /* ComicProtocol.swift in Sources */,
 				E3B222281C579C0300202028 /* TFHpple.m in Sources */,
+				E3F93CF01C58E5CC00BB2308 /* DilbertFetcher.swift in Sources */,
 				E35A21A31C42933C0019FA8F /* Comic.swift in Sources */,
 				E38487D61C327E46008388A7 /* AppDelegate.swift in Sources */,
 				E3D409551C39657400FE5FA9 /* ComicDetailViewController.swift in Sources */,
