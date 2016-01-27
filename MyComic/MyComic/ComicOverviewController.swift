@@ -12,6 +12,7 @@ class ComicOverviewController: UITableViewController, XkcdFetcherDelegate, Explo
 
     let cellReuseIdentifier = "ComicCell"
     var xkcdComics: [Comic] = []
+    var explosmComics: [Comic] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +57,7 @@ class ComicOverviewController: UITableViewController, XkcdFetcherDelegate, Explo
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -68,7 +69,7 @@ class ComicOverviewController: UITableViewController, XkcdFetcherDelegate, Explo
         case 0:
             return "xkcd"
         case 1:
-            return "nerfnow"
+            return "Cyanide & Happiness"
         case 2:
             return "xmbc"
         default:
@@ -79,9 +80,20 @@ class ComicOverviewController: UITableViewController, XkcdFetcherDelegate, Explo
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:ComicTableViewCell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as! ComicTableViewCell
         
-        if (!xkcdComics.isEmpty){
-            cell.initWithComic(xkcdComics[indexPath.row])
+        
+        switch (indexPath.section) {
+        case 0:
+            if (!xkcdComics.isEmpty){
+                cell.initWithComic(xkcdComics[indexPath.row])
+            }
+        case 1:
+            if (!explosmComics.isEmpty){
+                cell.initWithComic(explosmComics[indexPath.row])
+            }
+        default:
+            print("no comics error")
         }
+        
         
         return cell
     }
@@ -110,7 +122,9 @@ class ComicOverviewController: UITableViewController, XkcdFetcherDelegate, Explo
     }
     
     func explosmFetcherDidFinish(comics: [Comic]) {
-        
+        explosmComics = comics
+        self.refreshControl?.endRefreshing()
+        self.tableView.reloadData()
     }
 
 }

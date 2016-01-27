@@ -25,7 +25,6 @@ class Comic : NSObject, ComicProtocol, NSCoding {
 
     var comicName: String
     var comicType: ComicType = ComicType.Default
-    var comicImage: UIImage = UIImage()
     var comicDescription: String
     var comicImageSrc: NSURL
     
@@ -43,10 +42,9 @@ class Comic : NSObject, ComicProtocol, NSCoding {
         super.init()
     }
     
-    init(name: String, type: ComicType, image: UIImage, description: String, url: NSURL) {
+    init(name: String, type: ComicType, description: String, url: NSURL) {
         comicName = name
         comicType = type
-        comicImage = image
         comicDescription = description
         comicImageSrc = url
         super.init()
@@ -59,18 +57,16 @@ class Comic : NSObject, ComicProtocol, NSCoding {
     //this initializer is required to conform to nscoding protocol
     required convenience init?(coder aDecoder: NSCoder) {
         let name = aDecoder.decodeObjectForKey(PropertyKey.nameKey) as! String
-        let image = aDecoder.decodeObjectForKey(PropertyKey.imageKey) as! UIImage
         let type = aDecoder.decodeIntegerForKey(PropertyKey.typeKey) as ComicType.RawValue
         let description = aDecoder.decodeObjectForKey(PropertyKey.descriptionKey) as! String
         let url = aDecoder.decodeObjectForKey(PropertyKey.urlKey) as! NSURL
         
-        self.init(name: name, type: ComicType(rawValue: type)!, image: image, description: description, url: url)
+        self.init(name: name, type: ComicType(rawValue: type)!, description: description, url: url)
     }
     
     //encode properties
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(comicName, forKey: PropertyKey.nameKey)
-        aCoder.encodeObject(comicImage, forKey: PropertyKey.imageKey)
         aCoder.encodeInteger(comicType.rawValue , forKey: PropertyKey.typeKey)
         aCoder.encodeObject(comicDescription, forKey: PropertyKey.descriptionKey)
         aCoder.encodeObject(comicImageSrc, forKey: PropertyKey.urlKey)
