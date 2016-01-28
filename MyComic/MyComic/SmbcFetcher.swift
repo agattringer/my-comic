@@ -1,32 +1,29 @@
 //
-//  XkcdFetcher.swift
+//  SmbcFetcher.swift
 //  MyComic
 //
-//  Created by Alexander Gattringer on 08/01/16.
+//  Created by Alexander Gattringer on 28/01/16.
 //  Copyright © 2016 Alexander Gattringer. All rights reserved.
 //
 
-import UIKit
 import Foundation
 
-protocol XkcdFetcherDelegate {
-    func xkcdFetcherDidFinish(comics: [Comic])
+protocol SmbcFetcherDelegate {
+    func smbcFetcherDidFinish(comics: [Comic])
 }
 
-class XkcdFetcher : NSObject, FetcherProtocol, NSXMLParserDelegate {
-    //URL for the xkcd rss feed
-    let urlToFetch: NSURL = NSURL(string:"https://xkcd.com/rss.xml")!
+class SmbcFetcher : NSObject, FetcherProtocol, NSXMLParserDelegate {
+    let urlToFetch = NSURL(string:"http://smbc-comics.com/rss.php")!
     
-    var delegate: XkcdFetcherDelegate?
+    var comicsArray: [Comic] = Array()
     
+    var delegate: SmbcFetcherDelegate?
     var xmlParser: NSXMLParser!
     var insideItem: Bool = false
     var element: String!
     var stringInElement: String = String()
     
     var currentComic: Comic = Comic(name: "")
-    var comicsArray: [Comic] = Array()
-    
     
     func fetchComics(){
         comicsArray.removeAll()
@@ -56,6 +53,10 @@ class XkcdFetcher : NSObject, FetcherProtocol, NSXMLParserDelegate {
         //handle end of item
         if (elementName == "item"){
             comicsArray.append(currentComic)
+            if (comicsArray.count > 3) {
+                finishFetch()
+                return
+            }
             currentComic = Comic(name:"")
             insideItem = false
             return
@@ -79,28 +80,38 @@ class XkcdFetcher : NSObject, FetcherProtocol, NSXMLParserDelegate {
         }
     }
     
-    func parserDidEndDocument(parser: NSXMLParser) {
-        performSelectorOnMainThread("fetcherDidFinish", withObject: nil, waitUntilDone: false)
-    }
-    
-    func fetcherDidFinish(){
-        delegate?.xkcdFetcherDidFinish(comicsArray)
-    }
-    
     func parseImgSrcAndDescription(text: String){
         //regex for everything in double quotes
-        let regex = "\"(?:\\.|(\\\\\\\")|[^\\\"\"\\n])*\""
+        var regex = "\"(?:\\.|(\\\\\\\")|[^\\\"\"\\n])*\""
         
-        let matches = matchesForRegexInText(regex, text: text)
+        var matches = matchesForRegexInText(regex, text: text)
         
         //remove quote chars
         let imgSrc = matches[0].stringByReplacingOccurrencesOfString("\"", withString: "")
         
-        let description = matches[1].stringByReplacingOccurrencesOfString("\"", withString: "")
+        //remove linebreaks
+        //imgSrc = imgSrc.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+       
+        //regex for <p> tag
+        regex = "<p>(.*?)<\\/p>"
+        matches = matchesForRegexInText(regex, text: text)
+        
+        //trim tags and unnecessary text for description
+        var description = matches[0].substringFromIndex(matches[0].startIndex.advancedBy(14))
+        description = description.substringToIndex(description.startIndex.advancedBy(description.characters.count - 4))
         
         currentComic.comicImageSrc = NSURL(string:imgSrc)!
         currentComic.comicDescription = description
-        currentComic.comicType = ComicType.Xkcd
+        currentComic.comicType = ComicType.Smbc
+    }
+    
+    func finishFetch(){
+        performSelectorOnMainThread("fetcherDidFinish", withObject: nil, waitUntilDone: false)
+    }
+    
+    func fetcherDidFinish(){
+        xmlParser.abortParsing()
+        delegate?.smbcFetcherDidFinish(comicsArray)
     }
     
 }

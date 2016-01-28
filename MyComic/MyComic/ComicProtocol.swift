@@ -14,6 +14,7 @@ enum ComicType : Int {
     case NerfNow
     case Dilbert
     case Explosm
+    case Smbc
     case Default
 }
 

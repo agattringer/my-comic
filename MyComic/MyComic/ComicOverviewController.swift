@@ -8,12 +8,13 @@
 
 import UIKit
 
-class ComicOverviewController: UITableViewController, XkcdFetcherDelegate, ExplosmFetcherDelegate, DilbertFetcherDelegate{
+class ComicOverviewController: UITableViewController, XkcdFetcherDelegate, ExplosmFetcherDelegate, DilbertFetcherDelegate, SmbcFetcherDelegate{
 
     let cellReuseIdentifier = "ComicCell"
     var xkcdComics: [Comic] = []
     var explosmComics: [Comic] = []
     var dilbertComics: [Comic] = []
+    var smbcComics: [Comic] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +55,10 @@ class ComicOverviewController: UITableViewController, XkcdFetcherDelegate, Explo
         let dilbertFetcher = DilbertFetcher()
         dilbertFetcher.delegate = self
         dilbertFetcher.fetchComics()
+        
+        let smbcFetcher = SmbcFetcher()
+        smbcFetcher.delegate = self
+        smbcFetcher.fetchComics()
     }
     
     //settings button pressed
@@ -62,7 +67,7 @@ class ComicOverviewController: UITableViewController, XkcdFetcherDelegate, Explo
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -77,6 +82,8 @@ class ComicOverviewController: UITableViewController, XkcdFetcherDelegate, Explo
             return "Cyanide & Happiness"
         case 2:
             return "Dilbert"
+        case 3:
+            return "Smbc"
         default:
             return "error"
         }
@@ -98,6 +105,10 @@ class ComicOverviewController: UITableViewController, XkcdFetcherDelegate, Explo
         case 2:
             if (!dilbertComics.isEmpty){
                 cell.initWithComic(dilbertComics[indexPath.row])
+            }
+        case 3:
+            if (!smbcComics.isEmpty){
+                cell.initWithComic(smbcComics[indexPath.row])
             }
         default:
             print("no comics error")
@@ -138,6 +149,12 @@ class ComicOverviewController: UITableViewController, XkcdFetcherDelegate, Explo
     
     func dilbertFetcherDidFinish(comics: [Comic]) {
         dilbertComics = comics
+        self.refreshControl?.endRefreshing()
+        self.tableView.reloadData()
+    }
+    
+    func smbcFetcherDidFinish(comics: [Comic]) {
+        smbcComics = comics
         self.refreshControl?.endRefreshing()
         self.tableView.reloadData()
     }

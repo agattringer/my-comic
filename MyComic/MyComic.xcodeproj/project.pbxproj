@@ -17,6 +17,7 @@
 		E38487E01C327E46008388A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E38487DE1C327E46008388A7 /* LaunchScreen.storyboard */; };
 		E38487EB1C327E46008388A7 /* MyComicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38487EA1C327E46008388A7 /* MyComicTests.swift */; };
 		E38487F61C327E46008388A7 /* MyComicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38487F51C327E46008388A7 /* MyComicUITests.swift */; };
+		E38DEF371C5A175400A21DA2 /* SmbcFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38DEF361C5A175400A21DA2 /* SmbcFetcher.swift */; };
 		E3B222281C579C0300202028 /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B222231C579C0300202028 /* TFHpple.m */; };
 		E3B222291C579C0300202028 /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B222251C579C0300202028 /* TFHppleElement.m */; };
 		E3B2222A1C579C0300202028 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B222271C579C0300202028 /* XPathQuery.m */; };
@@ -114,6 +115,7 @@
 		E38487F11C327E46008388A7 /* MyComicUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyComicUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E38487F51C327E46008388A7 /* MyComicUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyComicUITests.swift; sourceTree = "<group>"; };
 		E38487F71C327E46008388A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E38DEF361C5A175400A21DA2 /* SmbcFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmbcFetcher.swift; sourceTree = "<group>"; };
 		E3B222211C579C0300202028 /* MyComic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyComic-Bridging-Header.h"; sourceTree = "<group>"; };
 		E3B222221C579C0300202028 /* TFHpple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHpple.h; sourceTree = "<group>"; };
 		E3B222231C579C0300202028 /* TFHpple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHpple.m; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				E32A6A7B1C400932009FC2DC /* XkcdFetcher.swift */,
 				E3E004D81C577CBC009810CB /* ExplosmFetcher.swift */,
 				E3F93CEF1C58E5CC00BB2308 /* DilbertFetcher.swift */,
+				E38DEF361C5A175400A21DA2 /* SmbcFetcher.swift */,
 			);
 			name = fetcher;
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E38DEF371C5A175400A21DA2 /* SmbcFetcher.swift in Sources */,
 				E38487D81C327E46008388A7 /* ComicOverviewController.swift in Sources */,
 				E3D4094E1C395AA700FE5FA9 /* ComicTableViewCell.swift in Sources */,
 				E32A6A7A1C40083A009FC2DC /* FetcherProtocol.swift in Sources */,
