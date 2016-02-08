@@ -10,14 +10,15 @@ import UIKit
 import Haneke
 
 class ComicDetailViewController : UIViewController, UIScrollViewDelegate {
-    var comic: ComicProtocol
+   
+    var comic: ComicProtocol!
+    
     @IBOutlet weak var comicImageView: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var scrollViewTopSpace: NSLayoutConstraint!
     
-    init(comic:ComicProtocol){
+    func setComic(comic:ComicProtocol){
         self.comic = comic
-        super.init(nibName: nil, bundle: nil)
-        
         self.title = comic.comicName
     }
     
@@ -39,11 +40,5 @@ class ComicDetailViewController : UIViewController, UIScrollViewDelegate {
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
         return self.comicImageView
     }
-    
-    //we are not nscoding compliant
-    required init(coder: NSCoder) {
-        fatalError("NSCoding not supported")
-    }
-    
     
 }

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="N0H-C9-aWb">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <scenes>
+        <!--Comic Detail View Controller-->
+        <scene sceneID="wVY-qB-phI">
+            <objects>
+                <viewController id="N0H-C9-aWb" customClass="ComicDetailViewController" customModule="MyComic" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Hu0-st-YTY"/>
+                        <viewControllerLayoutGuide type="bottom" id="WSU-Zc-Ddk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tbP-KB-B3A">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k3Q-z0-zCx">
+                                <rect key="frame" x="0.0" y="62" width="600" height="538"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JE1-vw-her">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="538"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="JE1-vw-her" secondAttribute="trailing" id="4fo-as-q5z"/>
+                                    <constraint firstItem="JE1-vw-her" firstAttribute="centerX" secondItem="k3Q-z0-zCx" secondAttribute="centerX" id="bgF-02-fMU"/>
+                                    <constraint firstItem="JE1-vw-her" firstAttribute="top" secondItem="k3Q-z0-zCx" secondAttribute="top" id="cKi-XA-N2d"/>
+                                    <constraint firstItem="JE1-vw-her" firstAttribute="centerY" secondItem="k3Q-z0-zCx" secondAttribute="centerY" id="fqk-6C-mST"/>
+                                    <constraint firstAttribute="bottom" secondItem="JE1-vw-her" secondAttribute="bottom" id="rPd-3N-Yn7"/>
+                                    <constraint firstItem="JE1-vw-her" firstAttribute="leading" secondItem="k3Q-z0-zCx" secondAttribute="leading" id="yA4-qy-VuF"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="k3Q-z0-zCx" secondAttribute="trailing" id="0dx-6p-ZVv"/>
+                            <constraint firstItem="WSU-Zc-Ddk" firstAttribute="top" secondItem="k3Q-z0-zCx" secondAttribute="bottom" id="ahV-w8-mzc"/>
+                            <constraint firstItem="k3Q-z0-zCx" firstAttribute="leading" secondItem="tbP-KB-B3A" secondAttribute="leading" id="h8i-Gp-r04"/>
+                            <constraint firstItem="k3Q-z0-zCx" firstAttribute="top" secondItem="tbP-KB-B3A" secondAttribute="top" constant="62" id="ycS-fZ-JrV"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="comicImageView" destination="JE1-vw-her" id="khD-jf-BDf"/>
+                        <outlet property="scrollView" destination="k3Q-z0-zCx" id="crg-oc-sb0"/>
+                        <outlet property="scrollViewTopSpace" destination="ycS-fZ-JrV" id="dHw-I1-1TD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DlW-CB-tZt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="344" y="205"/>
+        </scene>
+    </scenes>
+</document>

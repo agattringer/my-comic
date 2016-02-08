@@ -11,6 +11,8 @@ import UIKit
 class ComicOverviewController: UITableViewController, XkcdFetcherDelegate, ExplosmFetcherDelegate, DilbertFetcherDelegate, SmbcFetcherDelegate{
 
     let cellReuseIdentifier = "ComicCell"
+    let showComicDetail = "showComicDetail"
+    
     var xkcdComics: [Comic] = []
     var explosmComics: [Comic] = []
     var dilbertComics: [Comic] = []
@@ -127,9 +129,14 @@ class ComicOverviewController: UITableViewController, XkcdFetcherDelegate, Explo
         
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! ComicTableViewCell
         
-        let comicDetail:ComicDetailViewController = ComicDetailViewController(comic: cell.comic)
-        self.navigationController?.pushViewController(comicDetail, animated: true)
+        performSegueWithIdentifier(showComicDetail, sender: cell)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let comicDetail:ComicDetailViewController = segue.destinationViewController as! ComicDetailViewController
+        let cell:ComicTableViewCell = sender as! ComicTableViewCell
         
+        comicDetail.setComic(cell.comic)
     }
     
     func xkcdFetcherDidFinish(comics: [Comic]) {

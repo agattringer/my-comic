@@ -9,10 +9,11 @@
 /* Begin PBXBuildFile section */
 		E32A6A7A1C40083A009FC2DC /* FetcherProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32A6A791C40083A009FC2DC /* FetcherProtocol.swift */; };
 		E32A6A7C1C400932009FC2DC /* XkcdFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32A6A7B1C400932009FC2DC /* XkcdFetcher.swift */; };
+		E344FA021C68A12200B52EF9 /* DetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E344FA011C68A12200B52EF9 /* DetailView.storyboard */; };
 		E35A21A31C42933C0019FA8F /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35A21A21C42933C0019FA8F /* Comic.swift */; };
 		E38487D61C327E46008388A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38487D51C327E46008388A7 /* AppDelegate.swift */; };
 		E38487D81C327E46008388A7 /* ComicOverviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38487D71C327E46008388A7 /* ComicOverviewController.swift */; };
-		E38487DB1C327E46008388A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E38487D91C327E46008388A7 /* Main.storyboard */; };
+		E38487DB1C327E46008388A7 /* Overview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E38487D91C327E46008388A7 /* Overview.storyboard */; };
 		E38487DD1C327E46008388A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E38487DC1C327E46008388A7 /* Assets.xcassets */; };
 		E38487E01C327E46008388A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E38487DE1C327E46008388A7 /* LaunchScreen.storyboard */; };
 		E38487EB1C327E46008388A7 /* MyComicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38487EA1C327E46008388A7 /* MyComicTests.swift */; };
@@ -26,7 +27,6 @@
 		E3BFB6181C3AAFE9006BA02E /* ComicProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFB6171C3AAFE9006BA02E /* ComicProtocol.swift */; };
 		E3D4094E1C395AA700FE5FA9 /* ComicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D4094D1C395AA700FE5FA9 /* ComicTableViewCell.swift */; };
 		E3D409501C395B1B00FE5FA9 /* ComicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3D4094F1C395B1B00FE5FA9 /* ComicTableViewCell.xib */; };
-		E3D409531C39656500FE5FA9 /* ComicDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3D409521C39656500FE5FA9 /* ComicDetailViewController.xib */; };
 		E3D409551C39657400FE5FA9 /* ComicDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D409541C39657400FE5FA9 /* ComicDetailViewController.swift */; };
 		E3E004D91C577CBC009810CB /* ExplosmFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E004D81C577CBC009810CB /* ExplosmFetcher.swift */; };
 		E3F53F551C4E3EBD00BB2849 /* Haneke.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3F53F4A1C4E3E3200BB2849 /* Haneke.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -101,11 +101,12 @@
 /* Begin PBXFileReference section */
 		E32A6A791C40083A009FC2DC /* FetcherProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetcherProtocol.swift; sourceTree = "<group>"; };
 		E32A6A7B1C400932009FC2DC /* XkcdFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XkcdFetcher.swift; sourceTree = "<group>"; };
+		E344FA011C68A12200B52EF9 /* DetailView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DetailView.storyboard; sourceTree = "<group>"; };
 		E35A21A21C42933C0019FA8F /* Comic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
 		E38487D21C327E46008388A7 /* MyComic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyComic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E38487D51C327E46008388A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E38487D71C327E46008388A7 /* ComicOverviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicOverviewController.swift; sourceTree = "<group>"; };
-		E38487DA1C327E46008388A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E38487DA1C327E46008388A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Overview.storyboard; sourceTree = "<group>"; };
 		E38487DC1C327E46008388A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E38487DF1C327E46008388A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E38487E11C327E46008388A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -128,7 +129,6 @@
 		E3BFB6171C3AAFE9006BA02E /* ComicProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicProtocol.swift; sourceTree = "<group>"; };
 		E3D4094D1C395AA700FE5FA9 /* ComicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicTableViewCell.swift; sourceTree = "<group>"; };
 		E3D4094F1C395B1B00FE5FA9 /* ComicTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComicTableViewCell.xib; sourceTree = "<group>"; };
-		E3D409521C39656500FE5FA9 /* ComicDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComicDetailViewController.xib; sourceTree = "<group>"; };
 		E3D409541C39657400FE5FA9 /* ComicDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicDetailViewController.swift; sourceTree = "<group>"; };
 		E3E004D81C577CBC009810CB /* ExplosmFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplosmFetcher.swift; sourceTree = "<group>"; };
 		E3F53F421C4E3E3200BB2849 /* Haneke.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Haneke.xcodeproj; path = "../../../Downloads/HanekeSwift-master/Haneke.xcodeproj"; sourceTree = "<group>"; };
@@ -174,6 +174,15 @@
 			name = fetcher;
 			sourceTree = "<group>";
 		};
+		E344F9FF1C68A0D200B52EF9 /* overview */ = {
+			isa = PBXGroup;
+			children = (
+				E38487D91C327E46008388A7 /* Overview.storyboard */,
+				E38487D71C327E46008388A7 /* ComicOverviewController.swift */,
+			);
+			name = overview;
+			sourceTree = "<group>";
+		};
 		E38487C91C327E46008388A7 = {
 			isa = PBXGroup;
 			children = (
@@ -201,13 +210,12 @@
 			isa = PBXGroup;
 			children = (
 				E3F53F421C4E3E3200BB2849 /* Haneke.xcodeproj */,
+				E344F9FF1C68A0D200B52EF9 /* overview */,
+				E3D4094C1C39520000FE5FA9 /* detailView */,
 				E32A6A781C40082A009FC2DC /* fetcher */,
 				E3D409511C39601200FE5FA9 /* assets */,
-				E3D4094C1C39520000FE5FA9 /* view */,
 				E3D4094B1C3951F100FE5FA9 /* model */,
 				E38487D51C327E46008388A7 /* AppDelegate.swift */,
-				E38487D71C327E46008388A7 /* ComicOverviewController.swift */,
-				E38487D91C327E46008388A7 /* Main.storyboard */,
 				E38487DC1C327E46008388A7 /* Assets.xcassets */,
 				E38487DE1C327E46008388A7 /* LaunchScreen.storyboard */,
 				E38487E11C327E46008388A7 /* Info.plist */,
@@ -257,15 +265,15 @@
 			name = model;
 			sourceTree = "<group>";
 		};
-		E3D4094C1C39520000FE5FA9 /* view */ = {
+		E3D4094C1C39520000FE5FA9 /* detailView */ = {
 			isa = PBXGroup;
 			children = (
 				E3D4094D1C395AA700FE5FA9 /* ComicTableViewCell.swift */,
 				E3D4094F1C395B1B00FE5FA9 /* ComicTableViewCell.xib */,
-				E3D409521C39656500FE5FA9 /* ComicDetailViewController.xib */,
 				E3D409541C39657400FE5FA9 /* ComicDetailViewController.swift */,
+				E344FA011C68A12200B52EF9 /* DetailView.storyboard */,
 			);
-			name = view;
+			name = detailView;
 			sourceTree = "<group>";
 		};
 		E3D409511C39601200FE5FA9 /* assets */ = {
@@ -430,11 +438,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3D409531C39656500FE5FA9 /* ComicDetailViewController.xib in Resources */,
 				E38487E01C327E46008388A7 /* LaunchScreen.storyboard in Resources */,
 				E3D409501C395B1B00FE5FA9 /* ComicTableViewCell.xib in Resources */,
 				E38487DD1C327E46008388A7 /* Assets.xcassets in Resources */,
-				E38487DB1C327E46008388A7 /* Main.storyboard in Resources */,
+				E344FA021C68A12200B52EF9 /* DetailView.storyboard in Resources */,
+				E38487DB1C327E46008388A7 /* Overview.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -513,12 +521,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E38487D91C327E46008388A7 /* Main.storyboard */ = {
+		E38487D91C327E46008388A7 /* Overview.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				E38487DA1C327E46008388A7 /* Base */,
 			);
-			name = Main.storyboard;
+			name = Overview.storyboard;
 			sourceTree = "<group>";
 		};
 		E38487DE1C327E46008388A7 /* LaunchScreen.storyboard */ = {
@@ -622,7 +630,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				"HEADER_SEARCH_PATHS[arch=*]" = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = MyComic/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 9.1;
 				OTHER_LDFLAGS = "-lxml2";
@@ -643,7 +651,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				"HEADER_SEARCH_PATHS[arch=*]" = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = MyComic/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 9.1;
 				OTHER_LDFLAGS = "-lxml2";
