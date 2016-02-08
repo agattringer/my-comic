@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ComicOverviewController: UITableViewController, XkcdFetcherDelegate, ExplosmFetcherDelegate, DilbertFetcherDelegate, SmbcFetcherDelegate{
+class ComicOverviewController: UITableViewController, FetcherDelegate{
 
     let cellReuseIdentifier = "ComicCell"
     let showComicDetail = "showComicDetail"
@@ -47,21 +47,12 @@ class ComicOverviewController: UITableViewController, XkcdFetcherDelegate, Explo
     }
     
     func fetchComics(){
-        let fetcher = XkcdFetcher()
-        fetcher.delegate = self
-        fetcher.fetchComics()
+        let fetchers = DataManager.sharedManager.loadFetchersForSelectedComics()
         
-        let explosmFetcher = ExplosmFetcher()
-        explosmFetcher.delegate = self
-        explosmFetcher.fetchComics()
-        
-        let dilbertFetcher = DilbertFetcher()
-        dilbertFetcher.delegate = self
-        dilbertFetcher.fetchComics()
-        
-        let smbcFetcher = SmbcFetcher()
-        smbcFetcher.delegate = self
-        smbcFetcher.fetchComics()
+        for var fetcher in fetchers {
+            fetcher.delegate = self
+            fetcher.fetchComics()
+        }
     }
     
     //settings button pressed

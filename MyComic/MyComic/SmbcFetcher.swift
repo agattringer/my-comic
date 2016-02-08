@@ -8,16 +8,12 @@
 
 import Foundation
 
-protocol SmbcFetcherDelegate {
-    func smbcFetcherDidFinish(comics: [Comic])
-}
-
 class SmbcFetcher : NSObject, FetcherProtocol, NSXMLParserDelegate {
     let urlToFetch = NSURL(string:"http://smbc-comics.com/rss.php")!
     
     var comicsArray: [Comic] = Array()
     
-    var delegate: SmbcFetcherDelegate?
+    var delegate: FetcherDelegate?
     var xmlParser: NSXMLParser!
     var insideItem: Bool = false
     var element: String!
@@ -111,7 +107,7 @@ class SmbcFetcher : NSObject, FetcherProtocol, NSXMLParserDelegate {
     
     func fetcherDidFinish(){
         xmlParser.abortParsing()
-        delegate?.smbcFetcherDidFinish(comicsArray)
+        delegate?.fetcherDidFinish(comicsArray, type: ComicType.Smbc)
     }
     
 }

@@ -9,16 +9,30 @@
 import Foundation
 
 class DataManager {
+    //singleton
     static let sharedManager = DataManager()
+    
+    let xkcd = "Xkcd"
+    let explosm = "Cyanide & Happiness"
+    let dilbert = "Dilbert"
+    let smbc = "Smbc"
+    
     var documentsDirectory:NSURL!
-    // = NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
     var selectedComicsURL:NSURL!
-    // = documentsDirectory.URLByAppendingPathComponent("selectedComics")
+    var xkcdURL:NSURL!
+    var explosmURL:NSURL!
+    var dilbertURL:NSURL!
+    var smbcURL:NSURL!
     
     //This prevents others from using the default '()' initializer for this class.
     private init() {
         documentsDirectory = NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
         selectedComicsURL = documentsDirectory.URLByAppendingPathComponent("selectedComics")
+        
+        xkcdURL = documentsDirectory.URLByAppendingPathComponent(xkcd)
+        explosmURL = documentsDirectory.URLByAppendingPathComponent(explosm)
+        dilbertURL = documentsDirectory.URLByAppendingPathComponent(dilbert)
+        smbcURL = documentsDirectory.URLByAppendingPathComponent(smbc)
     }
     
     func loadSelectedComics() -> [String]?{
@@ -30,7 +44,28 @@ class DataManager {
     }
     
     func loadFetchersForSelectedComics() -> [FetcherProtocol]{
-        return [FetcherProtocol]()
+        let fetchers = NSMutableArray()
+        
+        if let selectedComics = loadSelectedComics(){
+            if (selectedComics.contains(xkcd)){
+                fetchers.addObject(XkcdFetcher())
+            }
+            
+            if (selectedComics.contains(explosm)){
+                fetchers.addObject(ExplosmFetcher())
+            }
+            
+            if (selectedComics.contains(dilbert)){
+                fetchers.addObject(DilbertFetcher())
+            }
+            
+            if (selectedComics.contains(smbc)){
+                fetchers.addObject(SmbcFetcher())
+            }
+        }
+        
+        //cast to fetcher array
+        return fetchers as AnyObject as! [FetcherProtocol]
     }
     
     func loadAvailableComics() -> [String]{

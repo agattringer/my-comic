@@ -8,15 +8,11 @@
 
 import Foundation
 
-protocol DilbertFetcherDelegate {
-    func dilbertFetcherDidFinish(comics: [Comic])
-}
-
 class DilbertFetcher : NSObject, FetcherProtocol, NSXMLParserDelegate {
     
     let urlToFetch: NSURL = NSURL(string:"http://comicfeeds.chrisbenard.net/view/dilbert/rss")!
     var comicsArray: [Comic] = Array()
-    var delegate: DilbertFetcherDelegate?
+    var delegate: FetcherDelegate?
     
     var xmlParser: NSXMLParser!
     var insideItem: Bool = false
@@ -97,6 +93,6 @@ class DilbertFetcher : NSObject, FetcherProtocol, NSXMLParserDelegate {
     
     func fetcherDidFinish(){
         xmlParser.abortParsing()
-        delegate?.dilbertFetcherDidFinish(comicsArray)
+        delegate?.fetcherDidFinish(comicsArray, type: ComicType.Dilbert)
     }
 }

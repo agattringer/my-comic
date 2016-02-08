@@ -9,10 +9,6 @@
 import UIKit
 import Foundation
 
-protocol ExplosmFetcherDelegate {
-    func explosmFetcherDidFinish(comics: [Comic])
-}
-
 class ExplosmFetcher : NSObject, FetcherProtocol {
     
     let explosmUrlString = "http://explosm.net/"
@@ -21,7 +17,7 @@ class ExplosmFetcher : NSObject, FetcherProtocol {
     //regex for everything in double quotes
     let doubleQuoteRegex = "\"(?:\\.|(\\\\\\\")|[^\\\"\"\\n])*\""
     
-    var delegate: ExplosmFetcherDelegate?
+    var delegate: FetcherDelegate?
     
     var comicsArray: [Comic] = Array()
     var sourceStrings: [String] = Array()
@@ -84,7 +80,7 @@ class ExplosmFetcher : NSObject, FetcherProtocol {
     }
 
     func fetcherDidFinish(){
-        delegate?.explosmFetcherDidFinish(comicsArray)
+        delegate?.fetcherDidFinish(comicsArray, type: ComicType.Explosm)
     }
 
 

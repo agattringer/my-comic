@@ -8,8 +8,14 @@
 
 import Foundation
 
+protocol FetcherDelegate {
+    func fetcherDidFinish(comics: [Comic], type: ComicType)
+}
+
 protocol FetcherProtocol {
+    var delegate:FetcherDelegate? { get set }
     var comicsArray: [Comic] { get set }
+    
     func fetchComics()
     func fetcherDidFinish()
 }

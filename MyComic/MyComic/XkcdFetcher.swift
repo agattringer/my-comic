@@ -9,16 +9,10 @@
 import UIKit
 import Foundation
 
-protocol XkcdFetcherDelegate {
-    func xkcdFetcherDidFinish(comics: [Comic])
-}
-
 class XkcdFetcher : NSObject, FetcherProtocol, NSXMLParserDelegate {
     //URL for the xkcd rss feed
     let urlToFetch: NSURL = NSURL(string:"https://xkcd.com/rss.xml")!
-    
-    var delegate: XkcdFetcherDelegate?
-    
+
     var xmlParser: NSXMLParser!
     var insideItem: Bool = false
     var element: String!
@@ -26,7 +20,7 @@ class XkcdFetcher : NSObject, FetcherProtocol, NSXMLParserDelegate {
     
     var currentComic: Comic = Comic(name: "")
     var comicsArray: [Comic] = Array()
-    
+    var delegate:FetcherDelegate?
     
     func fetchComics(){
         comicsArray.removeAll()
@@ -84,7 +78,7 @@ class XkcdFetcher : NSObject, FetcherProtocol, NSXMLParserDelegate {
     }
     
     func fetcherDidFinish(){
-        delegate?.xkcdFetcherDidFinish(comicsArray)
+        delegate?.fetcherDidFinish(comicsArray, type: ComicType.Xkcd)
     }
     
     func parseImgSrcAndDescription(text: String){
