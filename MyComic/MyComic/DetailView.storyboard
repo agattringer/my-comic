@@ -18,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k3Q-z0-zCx">
-                                <rect key="frame" x="0.0" y="62" width="600" height="538"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JE1-vw-her">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="538"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
@@ -39,13 +39,12 @@
                             <constraint firstAttribute="trailing" secondItem="k3Q-z0-zCx" secondAttribute="trailing" id="0dx-6p-ZVv"/>
                             <constraint firstItem="WSU-Zc-Ddk" firstAttribute="top" secondItem="k3Q-z0-zCx" secondAttribute="bottom" id="ahV-w8-mzc"/>
                             <constraint firstItem="k3Q-z0-zCx" firstAttribute="leading" secondItem="tbP-KB-B3A" secondAttribute="leading" id="h8i-Gp-r04"/>
-                            <constraint firstItem="k3Q-z0-zCx" firstAttribute="top" secondItem="tbP-KB-B3A" secondAttribute="top" constant="62" id="ycS-fZ-JrV"/>
+                            <constraint firstItem="k3Q-z0-zCx" firstAttribute="top" secondItem="tbP-KB-B3A" secondAttribute="top" id="ycS-fZ-JrV"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="comicImageView" destination="JE1-vw-her" id="khD-jf-BDf"/>
                         <outlet property="scrollView" destination="k3Q-z0-zCx" id="crg-oc-sb0"/>
-                        <outlet property="scrollViewTopSpace" destination="ycS-fZ-JrV" id="dHw-I1-1TD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DlW-CB-tZt" userLabel="First Responder" sceneMemberID="firstResponder"/>
