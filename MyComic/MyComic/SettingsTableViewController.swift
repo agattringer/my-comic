@@ -22,10 +22,13 @@ class SettingsTableViewController : UITableViewController {
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
         
         checkForSettings()
+        styleView()
         tableView.reloadData()
     }
     
-    func styleTableView(){
+    func styleView(){
+        self.title = "Settings"
+        tableView.tableFooterView = UIView() //remove empty cells
         
     }
     
@@ -50,6 +53,10 @@ class SettingsTableViewController : UITableViewController {
         selectedComics.addObject(cell)
     }
     
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Which comics are you interested in?"
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier)!
         cell.textLabel?.text = availableComics[indexPath.row] as? String
@@ -57,7 +64,6 @@ class SettingsTableViewController : UITableViewController {
         
         return cell
     }
-    
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath)! as UITableViewCell
