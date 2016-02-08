@@ -12,6 +12,7 @@ class ComicOverviewController: UITableViewController, XkcdFetcherDelegate, Explo
 
     let cellReuseIdentifier = "ComicCell"
     let showComicDetail = "showComicDetail"
+    let showSettings = "showSettings"
     
     var xkcdComics: [Comic] = []
     var explosmComics: [Comic] = []
@@ -66,6 +67,7 @@ class ComicOverviewController: UITableViewController, XkcdFetcherDelegate, Explo
     //settings button pressed
     func settingsButtonPressed(){
         NSLog(":::settings pressed:::")
+        performSegueWithIdentifier(showSettings, sender: self)
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -133,6 +135,11 @@ class ComicOverviewController: UITableViewController, XkcdFetcherDelegate, Explo
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier != showComicDetail){
+            //return if no comic detail
+            return
+        }
+        
         let comicDetail:ComicDetailViewController = segue.destinationViewController as! ComicDetailViewController
         let cell:ComicTableViewCell = sender as! ComicTableViewCell
         

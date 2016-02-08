@@ -31,11 +31,20 @@
                     <navigationItem key="navigationItem" title="Root View Controller" id="Nbi-2A-yBH"/>
                     <connections>
                         <segue destination="M4r-IO-EcL" kind="show" identifier="showComicDetail" id="ldX-eh-SZA"/>
+                        <segue destination="h0x-YQ-vUN" kind="show" identifier="showSettings" id="JEu-cC-cuh"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NOh-UR-ZvI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-99" y="282.75"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="gVI-3P-YQZ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Settings" id="h0x-YQ-vUN" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xK7-21-UUV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="485.25" y="210"/>
         </scene>
         <!--DetailView-->
         <scene sceneID="lxM-ki-fXT">

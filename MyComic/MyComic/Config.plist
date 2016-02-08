@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Available Comics</key>
+	<array>
+		<string>Xkcd</string>
+		<string>Cyanide &amp; Happiness</string>
+		<string>Smbc</string>
+		<string>Dilbert</string>
+	</array>
+</dict>
+</plist>

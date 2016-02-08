@@ -10,6 +10,9 @@
 		E32A6A7A1C40083A009FC2DC /* FetcherProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32A6A791C40083A009FC2DC /* FetcherProtocol.swift */; };
 		E32A6A7C1C400932009FC2DC /* XkcdFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32A6A7B1C400932009FC2DC /* XkcdFetcher.swift */; };
 		E344FA021C68A12200B52EF9 /* DetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E344FA011C68A12200B52EF9 /* DetailView.storyboard */; };
+		E344FA051C68A56700B52EF9 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E344FA041C68A56700B52EF9 /* Settings.storyboard */; };
+		E344FA071C68A59900B52EF9 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E344FA061C68A59900B52EF9 /* SettingsTableViewController.swift */; };
+		E344FA0A1C68AA6100B52EF9 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = E344FA091C68AA6100B52EF9 /* Config.plist */; };
 		E35A21A31C42933C0019FA8F /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35A21A21C42933C0019FA8F /* Comic.swift */; };
 		E38487D61C327E46008388A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38487D51C327E46008388A7 /* AppDelegate.swift */; };
 		E38487D81C327E46008388A7 /* ComicOverviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38487D71C327E46008388A7 /* ComicOverviewController.swift */; };
@@ -102,6 +105,9 @@
 		E32A6A791C40083A009FC2DC /* FetcherProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetcherProtocol.swift; sourceTree = "<group>"; };
 		E32A6A7B1C400932009FC2DC /* XkcdFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XkcdFetcher.swift; sourceTree = "<group>"; };
 		E344FA011C68A12200B52EF9 /* DetailView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DetailView.storyboard; sourceTree = "<group>"; };
+		E344FA041C68A56700B52EF9 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		E344FA061C68A59900B52EF9 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		E344FA091C68AA6100B52EF9 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		E35A21A21C42933C0019FA8F /* Comic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
 		E38487D21C327E46008388A7 /* MyComic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyComic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E38487D51C327E46008388A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -183,6 +189,15 @@
 			name = overview;
 			sourceTree = "<group>";
 		};
+		E344FA031C68A55500B52EF9 /* settings */ = {
+			isa = PBXGroup;
+			children = (
+				E344FA041C68A56700B52EF9 /* Settings.storyboard */,
+				E344FA061C68A59900B52EF9 /* SettingsTableViewController.swift */,
+			);
+			name = settings;
+			sourceTree = "<group>";
+		};
 		E38487C91C327E46008388A7 = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +227,7 @@
 				E3F53F421C4E3E3200BB2849 /* Haneke.xcodeproj */,
 				E344F9FF1C68A0D200B52EF9 /* overview */,
 				E3D4094C1C39520000FE5FA9 /* detailView */,
+				E344FA031C68A55500B52EF9 /* settings */,
 				E32A6A781C40082A009FC2DC /* fetcher */,
 				E3D409511C39601200FE5FA9 /* assets */,
 				E3D4094B1C3951F100FE5FA9 /* model */,
@@ -219,6 +235,7 @@
 				E38487DC1C327E46008388A7 /* Assets.xcassets */,
 				E38487DE1C327E46008388A7 /* LaunchScreen.storyboard */,
 				E38487E11C327E46008388A7 /* Info.plist */,
+				E344FA091C68AA6100B52EF9 /* Config.plist */,
 			);
 			path = MyComic;
 			sourceTree = "<group>";
@@ -441,8 +458,10 @@
 				E38487E01C327E46008388A7 /* LaunchScreen.storyboard in Resources */,
 				E3D409501C395B1B00FE5FA9 /* ComicTableViewCell.xib in Resources */,
 				E38487DD1C327E46008388A7 /* Assets.xcassets in Resources */,
+				E344FA051C68A56700B52EF9 /* Settings.storyboard in Resources */,
 				E344FA021C68A12200B52EF9 /* DetailView.storyboard in Resources */,
 				E38487DB1C327E46008388A7 /* Overview.storyboard in Resources */,
+				E344FA0A1C68AA6100B52EF9 /* Config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,6 +497,7 @@
 				E35A21A31C42933C0019FA8F /* Comic.swift in Sources */,
 				E38487D61C327E46008388A7 /* AppDelegate.swift in Sources */,
 				E3D409551C39657400FE5FA9 /* ComicDetailViewController.swift in Sources */,
+				E344FA071C68A59900B52EF9 /* SettingsTableViewController.swift in Sources */,
 				E32A6A7C1C400932009FC2DC /* XkcdFetcher.swift in Sources */,
 				E3B2222A1C579C0300202028 /* XPathQuery.m in Sources */,
 				E3B222291C579C0300202028 /* TFHppleElement.m in Sources */,
