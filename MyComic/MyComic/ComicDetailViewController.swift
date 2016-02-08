@@ -15,7 +15,6 @@ class ComicDetailViewController : UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var comicImageView: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var scrollViewTopSpace: NSLayoutConstraint!
     
     func setComic(comic:ComicProtocol){
         self.comic = comic

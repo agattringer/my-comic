@@ -12,7 +12,7 @@ import UIKit
 class SettingsTableViewController : UITableViewController {
     
     let cellReuseIdentifier = "Cell"
-    var availableComics:NSArray = []
+    var availableComics:[String]!
     var selectedComics:NSMutableArray = []
     
     override func viewDidLoad() {
@@ -22,35 +22,36 @@ class SettingsTableViewController : UITableViewController {
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
         
         checkForSettings()
-        styleView()
-        tableView.reloadData()
+        setupView()
     }
     
-    func styleView(){
+    func setupView(){
         self.title = "Settings"
         tableView.tableFooterView = UIView() //remove empty cells
-        
     }
     
     func checkForSettings(){
-        var settingsDict: NSDictionary?
-        if let path = NSBundle.mainBundle().pathForResource("Config", ofType: "plist") {
-            settingsDict = NSDictionary(contentsOfFile: path)
-        }
-        if let dict = settingsDict {
-            availableComics = dict.objectForKey("Available Comics") as! NSArray
+        //setup available comics
+        availableComics = DataManager.sharedManager.loadAvailableComics()
+        
+        //setup selected comics
+        let prevSelected = DataManager.sharedManager.loadSelectedComics()
+        if (prevSelected != nil){
+            selectedComics.addObjectsFromArray(prevSelected!)
         }
     }
     
     func handleSelection(cell: UITableViewCell){
-        if (selectedComics.containsObject(cell)){
+        if (selectedComics.containsObject((cell.textLabel?.text)!)){
             cell.accessoryType = UITableViewCellAccessoryType.None
-            selectedComics.removeObject(cell)
+            selectedComics.removeObject((cell.textLabel?.text)!)
             return
         }
         
         cell.accessoryType = UITableViewCellAccessoryType.Checkmark
-        selectedComics.addObject(cell)
+        selectedComics.addObject((cell.textLabel?.text)!)
+        //directly save to disk
+        DataManager.sharedManager.saveSelectedComics(selectedComics as AnyObject as! [String])
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -59,8 +60,12 @@ class SettingsTableViewController : UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier)!
-        cell.textLabel?.text = availableComics[indexPath.row] as? String
+        cell.textLabel?.text = availableComics[indexPath.row]
         
+        if (selectedComics.containsObject((cell.textLabel?.text)!)){
+            //cell is selected -> show it!
+            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        }
         
         return cell
     }
