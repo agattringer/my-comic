@@ -12,11 +12,6 @@ class DataManager {
     //singleton
     static let sharedManager = DataManager()
     
-    let xkcd = "Xkcd"
-    let explosm = "Cyanide & Happiness"
-    let dilbert = "Dilbert"
-    let smbc = "Smbc"
-    
     var documentsDirectory:NSURL!
     var selectedComicsURL:NSURL!
     var xkcdURL:NSURL!
@@ -29,10 +24,10 @@ class DataManager {
         documentsDirectory = NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
         selectedComicsURL = documentsDirectory.URLByAppendingPathComponent("selectedComics")
         
-        xkcdURL = documentsDirectory.URLByAppendingPathComponent(xkcd)
-        explosmURL = documentsDirectory.URLByAppendingPathComponent(explosm)
-        dilbertURL = documentsDirectory.URLByAppendingPathComponent(dilbert)
-        smbcURL = documentsDirectory.URLByAppendingPathComponent(smbc)
+        xkcdURL = documentsDirectory.URLByAppendingPathComponent(ComicType.Xkcd.rawValue)
+        explosmURL = documentsDirectory.URLByAppendingPathComponent(ComicType.Explosm.rawValue)
+        dilbertURL = documentsDirectory.URLByAppendingPathComponent(ComicType.Dilbert.rawValue)
+        smbcURL = documentsDirectory.URLByAppendingPathComponent(ComicType.Smbc.rawValue)
     }
     
     func loadSelectedComics() -> [String]?{
@@ -75,19 +70,19 @@ class DataManager {
         var fetchers = [FetcherProtocol]()
         
         if let selectedComics = loadSelectedComics(){
-            if (selectedComics.contains(xkcd)){
+            if (selectedComics.contains(ComicType.Xkcd.rawValue)){
                 fetchers.append(XkcdFetcher())
             }
             
-            if (selectedComics.contains(explosm)){
+            if (selectedComics.contains(ComicType.Explosm.rawValue)){
                 fetchers.append(ExplosmFetcher())
             }
             
-            if (selectedComics.contains(dilbert)){
+            if (selectedComics.contains(ComicType.Dilbert.rawValue)){
                 fetchers.append(DilbertFetcher())
             }
             
-            if (selectedComics.contains(smbc)){
+            if (selectedComics.contains(ComicType.Smbc.rawValue)){
                 fetchers.append(SmbcFetcher())
             }
         }
