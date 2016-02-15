@@ -40,6 +40,18 @@ class ComicOverviewController: UITableViewController, FetcherDelegate{
         if let loadedComics = DataManager.sharedManager.loadSelectedComics(){
             selectedComics = loadedComics
         }
+        if let loadedComics = DataManager.sharedManager.loadComicsWithType(ComicType.Xkcd){
+            xkcdComics = loadedComics
+        }
+        if let loadedComics = DataManager.sharedManager.loadComicsWithType(ComicType.Explosm){
+            explosmComics = loadedComics
+        }
+        if let loadedComics = DataManager.sharedManager.loadComicsWithType(ComicType.Dilbert){
+            dilbertComics = loadedComics
+        }
+        if let loadedComics = DataManager.sharedManager.loadComicsWithType(ComicType.Smbc){
+            smbcComics = loadedComics
+        }
     }
     
     func setupView(){

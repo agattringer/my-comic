@@ -49,10 +49,10 @@ class DataManager {
         NSKeyedArchiver.archiveRootObject(comics, toFile: file.path!)
     }
     
-    func loadComicsWithType(type: ComicType) -> [Comic]{
+    func loadComicsWithType(type: ComicType) -> [Comic]?{
         let file = getFileURLForComicType(type)
         
-        return NSKeyedUnarchiver.unarchiveObjectWithFile(file.path!) as! [Comic]
+        return NSKeyedUnarchiver.unarchiveObjectWithFile(file.path!) as? [Comic]
     }
     
     func getFileURLForComicType(type:ComicType) -> NSURL{
