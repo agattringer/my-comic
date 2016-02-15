@@ -22,6 +22,11 @@ class ComicDetailViewController : UIViewController, UIScrollViewDelegate {
     }
     
     override func viewDidLoad() {
+        setupView()
+        createShareButton()
+    }
+    
+    func setupView(){
         let comicFormat = Format<UIImage>(name: "comics", diskCapacity: 100 * 1024 * 1024) { image in
             return image
         }
@@ -34,6 +39,18 @@ class ComicDetailViewController : UIViewController, UIScrollViewDelegate {
         
         self.scrollView.scrollEnabled = true;
         self.scrollView.delegate = self
+    }
+    
+    func createShareButton(){
+        let shareButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "shareComic")
+        self.navigationItem.rightBarButtonItem = shareButton
+        
+    }
+    
+    func shareComic(){
+        let objectsToShare = [comicImageView.image!, comic.comicName]
+        let activityController = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        presentViewController(activityController, animated: true, completion: nil)
     }
     
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
