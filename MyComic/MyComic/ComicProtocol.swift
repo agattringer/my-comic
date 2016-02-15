@@ -9,13 +9,13 @@
 import Foundation
 import UIKit
 
-enum ComicType : Int {
-    case Xkcd
-    case NerfNow
-    case Dilbert
-    case Explosm
-    case Smbc
-    case Default
+enum ComicType : String {
+    case Xkcd = "Xkcd"
+    case NerfNow = "Nerf Now"
+    case Dilbert = "Dilbert"
+    case Explosm = "Cyanide & Happiness"
+    case Smbc = "Smbc"
+    case Default = "Default"
 }
 
 protocol ComicProtocol {

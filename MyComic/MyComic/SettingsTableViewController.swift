@@ -45,11 +45,10 @@ class SettingsTableViewController : UITableViewController {
         if (selectedComics.containsObject((cell.textLabel?.text)!)){
             cell.accessoryType = UITableViewCellAccessoryType.None
             selectedComics.removeObject((cell.textLabel?.text)!)
-            return
+        }else{
+            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+            selectedComics.addObject((cell.textLabel?.text)!)
         }
-        
-        cell.accessoryType = UITableViewCellAccessoryType.Checkmark
-        selectedComics.addObject((cell.textLabel?.text)!)
         //directly save to disk
         DataManager.sharedManager.saveSelectedComics(selectedComics as AnyObject as! [String])
     }

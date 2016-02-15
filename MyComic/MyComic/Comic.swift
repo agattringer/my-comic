@@ -54,10 +54,14 @@ class Comic : NSObject, ComicProtocol, NSCoding {
         return "comic: " + comicName
     }
     
+    static func getComicTypeForString(string:String) -> ComicType {
+        return ComicType.Default
+    }
+    
     //this initializer is required to conform to nscoding protocol
     required convenience init?(coder aDecoder: NSCoder) {
         let name = aDecoder.decodeObjectForKey(PropertyKey.nameKey) as! String
-        let type = aDecoder.decodeIntegerForKey(PropertyKey.typeKey) as ComicType.RawValue
+        let type = aDecoder.decodeObjectForKey(PropertyKey.typeKey) as! String
         let description = aDecoder.decodeObjectForKey(PropertyKey.descriptionKey) as! String
         let url = aDecoder.decodeObjectForKey(PropertyKey.urlKey) as! NSURL
         
@@ -67,7 +71,7 @@ class Comic : NSObject, ComicProtocol, NSCoding {
     //encode properties
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(comicName, forKey: PropertyKey.nameKey)
-        aCoder.encodeInteger(comicType.rawValue , forKey: PropertyKey.typeKey)
+        aCoder.encodeObject(comicType.rawValue , forKey: PropertyKey.typeKey)
         aCoder.encodeObject(comicDescription, forKey: PropertyKey.descriptionKey)
         aCoder.encodeObject(comicImageSrc, forKey: PropertyKey.urlKey)
     }

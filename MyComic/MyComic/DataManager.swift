@@ -43,29 +43,56 @@ class DataManager {
          NSKeyedArchiver.archiveRootObject(comics, toFile: selectedComicsURL.path!)
     }
     
+    func saveComicsWithType(comics: [Comic], type: ComicType){
+        let file = getFileURLForComicType(type)
+        
+        NSKeyedArchiver.archiveRootObject(comics, toFile: file.path!)
+    }
+    
+    func loadComicsWithType(type: ComicType) -> [Comic]{
+        let file = getFileURLForComicType(type)
+        
+        return NSKeyedUnarchiver.unarchiveObjectWithFile(file.path!) as! [Comic]
+    }
+    
+    func getFileURLForComicType(type:ComicType) -> NSURL{
+        switch (type){
+        case ComicType.Xkcd:
+            return xkcdURL
+        case ComicType.Explosm:
+            return explosmURL
+        case ComicType.Dilbert:
+            return dilbertURL
+        case ComicType.Smbc:
+            return smbcURL
+        default:
+            print("error")
+            return NSURL()
+        }
+    }
+    
     func loadFetchersForSelectedComics() -> [FetcherProtocol]{
-        let fetchers = NSMutableArray()
+        var fetchers = [FetcherProtocol]()
         
         if let selectedComics = loadSelectedComics(){
             if (selectedComics.contains(xkcd)){
-                fetchers.addObject(XkcdFetcher())
+                fetchers.append(XkcdFetcher())
             }
             
             if (selectedComics.contains(explosm)){
-                fetchers.addObject(ExplosmFetcher())
+                fetchers.append(ExplosmFetcher())
             }
             
             if (selectedComics.contains(dilbert)){
-                fetchers.addObject(DilbertFetcher())
+                fetchers.append(DilbertFetcher())
             }
             
             if (selectedComics.contains(smbc)){
-                fetchers.addObject(SmbcFetcher())
+                fetchers.append(SmbcFetcher())
             }
         }
         
-        //cast to fetcher array
-        return fetchers as AnyObject as! [FetcherProtocol]
+        return fetchers
     }
     
     func loadAvailableComics() -> [String]{

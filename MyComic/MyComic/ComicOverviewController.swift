@@ -19,6 +19,8 @@ class ComicOverviewController: UITableViewController, FetcherDelegate{
     var dilbertComics: [Comic] = []
     var smbcComics: [Comic] = []
     
+    var selectedComics: [String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,6 +28,21 @@ class ComicOverviewController: UITableViewController, FetcherDelegate{
         let nib = UINib(nibName: "ComicTableViewCell", bundle: nil)
         self.tableView.registerNib(nib, forCellReuseIdentifier: cellReuseIdentifier)
         
+        setupView()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        loadSavedData()
+        self.tableView.reloadData()
+    }
+    
+    func loadSavedData(){
+        if let loadedComics = DataManager.sharedManager.loadSelectedComics(){
+            selectedComics = loadedComics
+        }
+    }
+    
+    func setupView(){
         self.title = "Comics"
         
         //setup navbar
@@ -35,15 +52,6 @@ class ComicOverviewController: UITableViewController, FetcherDelegate{
         //refresh control
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: "fetchComics", forControlEvents: UIControlEvents.ValueChanged)
-        
-        //check for saved comics
-        if let storedComics = loadStoredComics() {
-            xkcdComics += storedComics
-        }
-    }
-    
-    func loadStoredComics() -> [Comic]?{
-        return NSKeyedUnarchiver.unarchiveObjectWithFile(Comic.ArchiveURL.path!) as? [Comic]
     }
     
     func fetchComics(){
@@ -55,60 +63,29 @@ class ComicOverviewController: UITableViewController, FetcherDelegate{
         }
     }
     
-    //settings button pressed
     func settingsButtonPressed(){
-        NSLog(":::settings pressed:::")
         performSegueWithIdentifier(showSettings, sender: self)
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 4
+        return selectedComics.count
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return xkcdComics.count
+        return getComicArrayForSection(section).count
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch (section){
-        case 0:
-            return "xkcd"
-        case 1:
-            return "Cyanide & Happiness"
-        case 2:
-            return "Dilbert"
-        case 3:
-            return "Smbc"
-        default:
-            return "error"
-        }
+        return selectedComics[section]
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:ComicTableViewCell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as! ComicTableViewCell
         
-        
-        switch (indexPath.section) {
-        case 0:
-            if (!xkcdComics.isEmpty){
-                cell.initWithComic(xkcdComics[indexPath.row])
-            }
-        case 1:
-            if (!explosmComics.isEmpty){
-                cell.initWithComic(explosmComics[indexPath.row])
-            }
-        case 2:
-            if (!dilbertComics.isEmpty){
-                cell.initWithComic(dilbertComics[indexPath.row])
-            }
-        case 3:
-            if (!smbcComics.isEmpty){
-                cell.initWithComic(smbcComics[indexPath.row])
-            }
-        default:
-            print("no comics error")
+        let comics = getComicArrayForSection(indexPath.section)
+        if (!comics.isEmpty){
+            cell.initWithComic(comics[indexPath.row])
         }
-        
         
         return cell
     }
@@ -125,6 +102,21 @@ class ComicOverviewController: UITableViewController, FetcherDelegate{
         performSegueWithIdentifier(showComicDetail, sender: cell)
     }
     
+    func getComicArrayForSection(section: Int) -> [Comic]{
+        switch (selectedComics[section]){
+        case ComicType.Xkcd.rawValue:
+            return xkcdComics
+        case ComicType.Explosm.rawValue:
+            return explosmComics
+        case ComicType.Dilbert.rawValue:
+            return dilbertComics
+        case ComicType.Smbc.rawValue:
+            return smbcComics
+        default:
+            return [Comic]()
+        }
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier != showComicDetail){
             //return if no comic detail
@@ -137,29 +129,27 @@ class ComicOverviewController: UITableViewController, FetcherDelegate{
         comicDetail.setComic(cell.comic)
     }
     
-    func xkcdFetcherDidFinish(comics: [Comic]) {
-        xkcdComics = comics
-        self.refreshControl?.endRefreshing()
+    func fetcherDidFinish(comics: [Comic], type: ComicType) {
+        switch (type){
+        case ComicType.Xkcd:
+            xkcdComics = comics
+            break
+        case ComicType.Explosm:
+            explosmComics = comics
+            break
+        case ComicType.Dilbert:
+            dilbertComics = comics
+            break
+        case ComicType.Smbc:
+            smbcComics = comics
+            break
+        default:
+            print("error")
+            break
+        }
         
-        NSKeyedArchiver.archiveRootObject(xkcdComics, toFile: Comic.ArchiveURL.path!)
+        DataManager.sharedManager.saveComicsWithType(comics, type: type)
         
-        self.tableView.reloadData()
-    }
-    
-    func explosmFetcherDidFinish(comics: [Comic]) {
-        explosmComics = comics
-        self.refreshControl?.endRefreshing()
-        self.tableView.reloadData()
-    }
-    
-    func dilbertFetcherDidFinish(comics: [Comic]) {
-        dilbertComics = comics
-        self.refreshControl?.endRefreshing()
-        self.tableView.reloadData()
-    }
-    
-    func smbcFetcherDidFinish(comics: [Comic]) {
-        smbcComics = comics
         self.refreshControl?.endRefreshing()
         self.tableView.reloadData()
     }
