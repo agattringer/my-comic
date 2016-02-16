@@ -29,6 +29,8 @@
 		E3B2222D1C579F5C00202028 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E3B2222B1C579F5C00202028 /* libxml2.2.tbd */; };
 		E3B2222E1C579F5C00202028 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E3B2222C1C579F5C00202028 /* libxml2.tbd */; };
 		E3BFB6181C3AAFE9006BA02E /* ComicProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BFB6171C3AAFE9006BA02E /* ComicProtocol.swift */; };
+		E3C9A7D71C73B5E2003A48FD /* icon_star_full.png in Resources */ = {isa = PBXBuildFile; fileRef = E3C9A7D51C73B5E2003A48FD /* icon_star_full.png */; };
+		E3C9A7D81C73B5E2003A48FD /* icon_star.png in Resources */ = {isa = PBXBuildFile; fileRef = E3C9A7D61C73B5E2003A48FD /* icon_star.png */; };
 		E3D4094E1C395AA700FE5FA9 /* ComicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D4094D1C395AA700FE5FA9 /* ComicTableViewCell.swift */; };
 		E3D409501C395B1B00FE5FA9 /* ComicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3D4094F1C395B1B00FE5FA9 /* ComicTableViewCell.xib */; };
 		E3D409551C39657400FE5FA9 /* ComicDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D409541C39657400FE5FA9 /* ComicDetailViewController.swift */; };
@@ -135,6 +137,8 @@
 		E3B2222B1C579F5C00202028 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		E3B2222C1C579F5C00202028 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		E3BFB6171C3AAFE9006BA02E /* ComicProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicProtocol.swift; sourceTree = "<group>"; };
+		E3C9A7D51C73B5E2003A48FD /* icon_star_full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_star_full.png; path = assets/icon_star_full.png; sourceTree = "<group>"; };
+		E3C9A7D61C73B5E2003A48FD /* icon_star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_star.png; path = assets/icon_star.png; sourceTree = "<group>"; };
 		E3D4094D1C395AA700FE5FA9 /* ComicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicTableViewCell.swift; sourceTree = "<group>"; };
 		E3D4094F1C395B1B00FE5FA9 /* ComicTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComicTableViewCell.xib; sourceTree = "<group>"; };
 		E3D409541C39657400FE5FA9 /* ComicDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicDetailViewController.swift; sourceTree = "<group>"; };
@@ -299,6 +303,8 @@
 		E3D409511C39601200FE5FA9 /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				E3C9A7D51C73B5E2003A48FD /* icon_star_full.png */,
+				E3C9A7D61C73B5E2003A48FD /* icon_star.png */,
 			);
 			name = assets;
 			sourceTree = "<group>";
@@ -459,10 +465,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E38487E01C327E46008388A7 /* LaunchScreen.storyboard in Resources */,
+				E3C9A7D71C73B5E2003A48FD /* icon_star_full.png in Resources */,
 				E3D409501C395B1B00FE5FA9 /* ComicTableViewCell.xib in Resources */,
 				E38487DD1C327E46008388A7 /* Assets.xcassets in Resources */,
 				E344FA051C68A56700B52EF9 /* Settings.storyboard in Resources */,
 				E344FA021C68A12200B52EF9 /* DetailView.storyboard in Resources */,
+				E3C9A7D81C73B5E2003A48FD /* icon_star.png in Resources */,
 				E38487DB1C327E46008388A7 /* Overview.storyboard in Resources */,
 				E344FA0A1C68AA6100B52EF9 /* Config.plist in Resources */,
 			);
