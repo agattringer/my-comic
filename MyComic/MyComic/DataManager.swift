@@ -18,6 +18,7 @@ class DataManager {
     var explosmURL:NSURL!
     var dilbertURL:NSURL!
     var smbcURL:NSURL!
+    var favouritesURL:NSURL!
     
     //This prevents others from using the default '()' initializer for this class.
     private init() {
@@ -28,6 +29,15 @@ class DataManager {
         explosmURL = documentsDirectory.URLByAppendingPathComponent(ComicType.Explosm.rawValue)
         dilbertURL = documentsDirectory.URLByAppendingPathComponent(ComicType.Dilbert.rawValue)
         smbcURL = documentsDirectory.URLByAppendingPathComponent(ComicType.Smbc.rawValue)
+        favouritesURL = documentsDirectory.URLByAppendingPathComponent("favouriteComics")
+    }
+    
+    func loadFavouriteComics() -> [Comic]?{
+        return NSKeyedUnarchiver.unarchiveObjectWithFile(favouritesURL.path!) as? [Comic]
+    }
+    
+    func saveFavouriteComics(comics: [Comic]){
+        NSKeyedArchiver.archiveRootObject(comics, toFile: favouritesURL.path!)
     }
     
     func loadSelectedComics() -> [String]?{

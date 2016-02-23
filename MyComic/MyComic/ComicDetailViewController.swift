@@ -10,16 +10,17 @@ import UIKit
 import Haneke
 
 class ComicDetailViewController : UIViewController, UIScrollViewDelegate {
-   
-    var comic: ComicProtocol!
     
+    var comic: Comic!{
+        didSet{
+            self.title = comic.comicName
+            self.comic.isFavourite = isFavouriteComic()
+        }
+    }
+
+    @IBOutlet weak var starButton: UIButton!
     @IBOutlet weak var comicImageView: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
-    
-    func setComic(comic:ComicProtocol){
-        self.comic = comic
-        self.title = comic.comicName
-    }
     
     override func viewDidLoad() {
         setupView()
@@ -39,12 +40,49 @@ class ComicDetailViewController : UIViewController, UIScrollViewDelegate {
         
         self.scrollView.scrollEnabled = true;
         self.scrollView.delegate = self
+        self.scrollView.contentMode = UIViewContentMode.Center
+        
+        setupStarButton(comic.isFavourite)
     }
     
     func createShareButton(){
         let shareButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "shareComic")
         self.navigationItem.rightBarButtonItem = shareButton
+    }
+    
+    @IBAction func starComic(sender: AnyObject) {
+        comic.isFavourite = !comic.isFavourite
+        setupStarButton(comic.isFavourite)
+        addToOrRemoveFromFavourites()
+    }
+    
+    func addToOrRemoveFromFavourites(){
+        let favouriteComics = NSMutableArray()
         
+        if let loadedComics = DataManager.sharedManager.loadFavouriteComics(){
+            favouriteComics.addObjectsFromArray(loadedComics)
+        }
+        favouriteComics.removeObject(comic)
+        
+        if (comic.isFavourite){
+            favouriteComics.addObject(comic)
+        }
+        DataManager.sharedManager.saveFavouriteComics(favouriteComics as AnyObject as! [Comic])
+    }
+    
+    func isFavouriteComic() -> Bool{
+        if let loadedComics = DataManager.sharedManager.loadFavouriteComics(){
+            return loadedComics.contains(comic)
+        }
+        return false
+    }
+    
+    func setupStarButton(enabled: Bool){
+        if (enabled){
+            starButton.setImage(UIImage(named: "icon_star_full.png"), forState: UIControlState.Normal)
+        }else{
+            starButton.setImage(UIImage(named: "icon_star.png"), forState: UIControlState.Normal)
+        }
     }
     
     func shareComic(){

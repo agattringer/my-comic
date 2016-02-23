@@ -61,6 +61,10 @@ class ComicOverviewController: UITableViewController, FetcherDelegate{
         let settingsButton = UIBarButtonItem(title: "\u{2699}", style: UIBarButtonItemStyle.Plain, target: self, action: "settingsButtonPressed")
         navigationItem.setLeftBarButtonItem(settingsButton, animated: false)
         
+        let favouritesButton = UIBarButtonItem(title: "\u{2764}", style: UIBarButtonItemStyle.Plain, target: self, action: "favouritesButtonPressed")
+        
+        navigationItem.setRightBarButtonItem(favouritesButton, animated: false)
+        
         //refresh control
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: "fetchComics", forControlEvents: UIControlEvents.ValueChanged)
@@ -73,6 +77,10 @@ class ComicOverviewController: UITableViewController, FetcherDelegate{
             fetcher.delegate = self
             fetcher.fetchComics()
         }
+    }
+    
+    func favouritesButtonPressed(){
+        print("favourites")
     }
     
     func settingsButtonPressed(){
@@ -138,7 +146,7 @@ class ComicOverviewController: UITableViewController, FetcherDelegate{
         let comicDetail:ComicDetailViewController = segue.destinationViewController as! ComicDetailViewController
         let cell:ComicTableViewCell = sender as! ComicTableViewCell
         
-        comicDetail.setComic(cell.comic)
+        comicDetail.comic = cell.comic
     }
     
     func fetcherDidFinish(comics: [Comic], type: ComicType) {

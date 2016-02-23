@@ -81,4 +81,15 @@ class Comic : NSObject, ComicProtocol, NSCoding {
         aCoder.encodeObject(comicImageSrc, forKey: PropertyKey.urlKey)
         aCoder.encodeBool(isFavourite, forKey: PropertyKey.favKey)
     }
+    
+    override func isEqual(object: AnyObject?) -> Bool {
+        if let object = object as? Comic {
+            return comicImageSrc == object.comicImageSrc && comicName == object.comicName
+        }
+        return false
+    }
+    
+    override var hash: Int {
+        return comicImageSrc.hashValue
+    }
 }

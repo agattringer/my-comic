@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="N0H-C9-aWb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="N0H-C9-aWb">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
         <!--Comic Detail View Controller-->
@@ -17,34 +17,72 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y0D-a6-KiW">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="g3c-7g-RFh"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Comic Detail" id="rVA-BK-xA8"/>
+                                </items>
+                            </navigationBar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k3Q-z0-zCx">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="44" width="600" height="512"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JE1-vw-her">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="JE1-vw-her" secondAttribute="trailing" id="4fo-as-q5z"/>
                                     <constraint firstItem="JE1-vw-her" firstAttribute="centerX" secondItem="k3Q-z0-zCx" secondAttribute="centerX" id="bgF-02-fMU"/>
                                     <constraint firstItem="JE1-vw-her" firstAttribute="top" secondItem="k3Q-z0-zCx" secondAttribute="top" id="cKi-XA-N2d"/>
-                                    <constraint firstItem="JE1-vw-her" firstAttribute="centerY" secondItem="k3Q-z0-zCx" secondAttribute="centerY" id="fqk-6C-mST"/>
-                                    <constraint firstAttribute="bottom" secondItem="JE1-vw-her" secondAttribute="bottom" id="rPd-3N-Yn7"/>
+                                    <constraint firstItem="JE1-vw-her" firstAttribute="centerY" secondItem="k3Q-z0-zCx" secondAttribute="centerY" constant="22" id="fqk-6C-mST"/>
+                                    <constraint firstAttribute="bottom" secondItem="JE1-vw-her" secondAttribute="bottom" constant="-44" id="rPd-3N-Yn7"/>
                                     <constraint firstItem="JE1-vw-her" firstAttribute="leading" secondItem="k3Q-z0-zCx" secondAttribute="leading" id="yA4-qy-VuF"/>
                                 </constraints>
                             </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TGM-sq-RK2" userLabel="bottom bar">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SWs-qO-0tZ">
+                                        <rect key="frame" x="285" y="7" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="Kvh-wZ-Hk7"/>
+                                            <constraint firstAttribute="height" constant="30" id="wTL-EV-Jzo"/>
+                                        </constraints>
+                                        <state key="normal" image="icon_star.png"/>
+                                        <connections>
+                                            <action selector="starComic:" destination="N0H-C9-aWb" eventType="touchUpInside" id="Snd-o0-M4h"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="SWs-qO-0tZ" firstAttribute="centerY" secondItem="TGM-sq-RK2" secondAttribute="centerY" id="4z3-Le-fNh"/>
+                                    <constraint firstItem="SWs-qO-0tZ" firstAttribute="centerX" secondItem="TGM-sq-RK2" secondAttribute="centerX" id="7fF-gc-cNo"/>
+                                    <constraint firstAttribute="height" constant="44" id="WAF-lo-08u"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="k3Q-z0-zCx" secondAttribute="trailing" id="0dx-6p-ZVv"/>
-                            <constraint firstItem="WSU-Zc-Ddk" firstAttribute="top" secondItem="k3Q-z0-zCx" secondAttribute="bottom" id="ahV-w8-mzc"/>
+                            <constraint firstItem="TGM-sq-RK2" firstAttribute="leading" secondItem="tbP-KB-B3A" secondAttribute="leading" id="Ss9-Ab-jfH"/>
+                            <constraint firstItem="WSU-Zc-Ddk" firstAttribute="top" secondItem="k3Q-z0-zCx" secondAttribute="bottom" constant="44" id="ahV-w8-mzc"/>
+                            <constraint firstAttribute="trailing" secondItem="Y0D-a6-KiW" secondAttribute="trailing" id="fcW-RM-Ng9"/>
+                            <constraint firstAttribute="trailing" secondItem="TGM-sq-RK2" secondAttribute="trailing" id="gEW-UZ-w8A"/>
                             <constraint firstItem="k3Q-z0-zCx" firstAttribute="leading" secondItem="tbP-KB-B3A" secondAttribute="leading" id="h8i-Gp-r04"/>
-                            <constraint firstItem="k3Q-z0-zCx" firstAttribute="top" secondItem="tbP-KB-B3A" secondAttribute="top" id="ycS-fZ-JrV"/>
+                            <constraint firstItem="Y0D-a6-KiW" firstAttribute="leading" secondItem="tbP-KB-B3A" secondAttribute="leading" id="jeV-bt-i5c"/>
+                            <constraint firstItem="WSU-Zc-Ddk" firstAttribute="top" secondItem="TGM-sq-RK2" secondAttribute="bottom" id="vEe-eq-n1u"/>
+                            <constraint firstItem="Y0D-a6-KiW" firstAttribute="top" secondItem="tbP-KB-B3A" secondAttribute="top" id="vZt-A0-KbW"/>
+                            <constraint firstItem="k3Q-z0-zCx" firstAttribute="top" secondItem="tbP-KB-B3A" secondAttribute="top" constant="44" id="ycS-fZ-JrV"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="comicImageView" destination="JE1-vw-her" id="khD-jf-BDf"/>
                         <outlet property="scrollView" destination="k3Q-z0-zCx" id="crg-oc-sb0"/>
+                        <outlet property="starButton" destination="SWs-qO-0tZ" id="AM6-Qx-dlP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DlW-CB-tZt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -52,4 +90,7 @@
             <point key="canvasLocation" x="344" y="205"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_star.png" width="128" height="128"/>
+    </resources>
 </document>
