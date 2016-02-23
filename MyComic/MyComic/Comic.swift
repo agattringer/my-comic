@@ -16,13 +16,14 @@ struct PropertyKey {
     static let typeKey = "type"
     static let descriptionKey = "description"
     static let urlKey = "imageSrc"
+    static let favKey = "isFavourite"
 }
 
 class Comic : NSObject, ComicProtocol, NSCoding {
     static let DocumentsDirectory = NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.URLByAppendingPathComponent("comics")
     
-
+    var isFavourite: Bool
     var comicName: String
     var comicType: ComicType = ComicType.Default
     var comicDescription: String
@@ -32,6 +33,7 @@ class Comic : NSObject, ComicProtocol, NSCoding {
         self.comicName = ""
         comicDescription = ""
         comicImageSrc = NSURL(string: "")!
+        isFavourite = false
         super.init()
     }
     
@@ -39,14 +41,16 @@ class Comic : NSObject, ComicProtocol, NSCoding {
         self.comicName = name
         comicDescription = ""
         comicImageSrc = NSURL(string: "")!
+        isFavourite = false
         super.init()
     }
     
-    init(name: String, type: ComicType, description: String, url: NSURL) {
+    init(name: String, type: ComicType, description: String, url: NSURL, favourite: Bool) {
         comicName = name
         comicType = type
         comicDescription = description
         comicImageSrc = url
+        isFavourite = favourite
         super.init()
     }
     
@@ -64,8 +68,9 @@ class Comic : NSObject, ComicProtocol, NSCoding {
         let type = aDecoder.decodeObjectForKey(PropertyKey.typeKey) as! String
         let description = aDecoder.decodeObjectForKey(PropertyKey.descriptionKey) as! String
         let url = aDecoder.decodeObjectForKey(PropertyKey.urlKey) as! NSURL
+        let fav = aDecoder.decodeBoolForKey(PropertyKey.favKey) as Bool
         
-        self.init(name: name, type: ComicType(rawValue: type)!, description: description, url: url)
+        self.init(name: name, type: ComicType(rawValue: type)!, description: description, url: url, favourite: fav)
     }
     
     //encode properties
@@ -74,5 +79,6 @@ class Comic : NSObject, ComicProtocol, NSCoding {
         aCoder.encodeObject(comicType.rawValue , forKey: PropertyKey.typeKey)
         aCoder.encodeObject(comicDescription, forKey: PropertyKey.descriptionKey)
         aCoder.encodeObject(comicImageSrc, forKey: PropertyKey.urlKey)
+        aCoder.encodeBool(isFavourite, forKey: PropertyKey.favKey)
     }
 }

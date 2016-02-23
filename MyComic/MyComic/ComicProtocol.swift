@@ -23,6 +23,6 @@ protocol ComicProtocol {
     var comicType: ComicType { get set }
     var comicDescription: String { get set }
     var comicImageSrc: NSURL  { get set }
-    
+    var isFavourite: Bool { get set }
     func getDescription() -> String
 }
