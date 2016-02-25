@@ -191,11 +191,12 @@ class ComicOverviewController: UITableViewController, FetcherDelegate{
         }
         
         for comic in newComics{
+            var index = 0
             if(!newComicArray.contains(comic)){
-                newComicArray.insert(comic, atIndex: 0)
+                newComicArray.insert(comic, atIndex: index++)
             }
         }
-        
+    
         return newComicArray
     }
 }
