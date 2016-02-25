@@ -391,6 +391,11 @@
 					E38487D11C327E46008388A7 = {
 						CreatedOnToolsVersion = 7.1.1;
 						DevelopmentTeam = 3522ZWYGA6;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					E38487E51C327E46008388A7 = {
 						CreatedOnToolsVersion = 7.1.1;

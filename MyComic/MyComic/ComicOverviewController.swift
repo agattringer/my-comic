@@ -19,7 +19,7 @@ class ComicOverviewController: UITableViewController, FetcherDelegate{
     var dilbertComics: [Comic] = []
     var smbcComics: [Comic] = []
     
-    var selectedComics: [String] = []
+    private var selectedComics: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -180,20 +180,20 @@ class ComicOverviewController: UITableViewController, FetcherDelegate{
         self.tableView.reloadData()
     }
     
-    func getComicsToSave(newComics: [Comic], currentComics: [Comic]) -> [Comic]{
+    private func getComicsToSave(newComics: [Comic], currentComics: [Comic]) -> [Comic]{
         
         var newComicArray = [Comic]()
         
         for comic in currentComics{
+            var index = 0
             if (newComics.contains(comic)){
-                newComicArray.append(comic)
+                newComicArray.insert(comic, atIndex: index++)
             }
         }
         
         for comic in newComics{
-            var index = 0
             if(!newComicArray.contains(comic)){
-                newComicArray.insert(comic, atIndex: index++)
+                newComicArray.append(comic)
             }
         }
     
