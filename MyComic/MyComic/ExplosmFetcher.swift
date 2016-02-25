@@ -76,7 +76,7 @@ class ExplosmFetcher : NSObject, FetcherProtocol {
         let comicDescription = elements[0].content
         
         
-        return Comic(name: comicName, type: ComicType.Explosm, description: comicDescription, url: NSURL(string: comicSrc)!, favourite: false)
+        return Comic(name: comicName, type: ComicType.Explosm, description: comicDescription, url: NSURL(string: comicSrc)!, favourite: false, unread: true)
     }
 
     func fetcherDidFinish(){

@@ -9,6 +9,16 @@
 import Foundation
 import UIKit
 
+struct PropertyKey {
+    static let nameKey = "name"
+    static let imageKey = "image"
+    static let typeKey = "type"
+    static let descriptionKey = "description"
+    static let urlKey = "imageSrc"
+    static let favKey = "isFavourite"
+    static let unreadKey = "isUnread"
+}
+
 enum ComicType : String {
     case Xkcd = "Xkcd"
     case NerfNow = "Nerf Now"
@@ -24,5 +34,6 @@ protocol ComicProtocol {
     var comicDescription: String { get set }
     var comicImageSrc: NSURL  { get set }
     var isFavourite: Bool { get set }
+    var isUnread: Bool { get set }
     func getDescription() -> String
 }

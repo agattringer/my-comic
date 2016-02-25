@@ -21,7 +21,11 @@ class ComicTableViewCell : UITableViewCell {
         self.comic = comic
         self.thumbnailImageView.hnk_setImageFromURL(comic.comicImageSrc)
         self.descriptionLabel.text = comic.comicName
-        
+        if (comic.isUnread){
+            self.backgroundColor = UIColor.blueColor()
+        }else{
+            self.backgroundColor = UIColor.whiteColor()
+        }
     }
     
 }

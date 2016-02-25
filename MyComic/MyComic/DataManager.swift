@@ -32,6 +32,17 @@ class DataManager {
         favouritesURL = documentsDirectory.URLByAppendingPathComponent("favouriteComics")
     }
     
+    func saveSingleComic(comic: Comic){
+        if let comics = loadComicsWithType(comic.comicType){
+            //search for the comic to change
+            if let index = comics.indexOf(comic){
+                comics[index].isUnread = comic.isUnread
+            }
+            //save array to disk again
+            saveComicsWithType(comics, type: comic.comicType)
+        }
+    }
+    
     func loadFavouriteComics() -> [Comic]?{
         return NSKeyedUnarchiver.unarchiveObjectWithFile(favouritesURL.path!) as? [Comic]
     }

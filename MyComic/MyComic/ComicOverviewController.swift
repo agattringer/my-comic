@@ -150,29 +150,53 @@ class ComicOverviewController: UITableViewController, FetcherDelegate{
     }
     
     func fetcherDidFinish(comics: [Comic], type: ComicType) {
+        var comicsToSave = [Comic]()
+        
         switch (type){
         case ComicType.Xkcd:
-            xkcdComics = comics
+            comicsToSave = getComicsToSave(comics, currentComics: xkcdComics)
+            xkcdComics = comicsToSave
             break
         case ComicType.Explosm:
-            explosmComics = comics
+            comicsToSave = getComicsToSave(comics, currentComics: explosmComics)
+            explosmComics = comicsToSave
             break
         case ComicType.Dilbert:
-            dilbertComics = comics
+            comicsToSave = getComicsToSave(comics, currentComics: dilbertComics)
+            dilbertComics = comicsToSave
             break
         case ComicType.Smbc:
-            smbcComics = comics
+            comicsToSave = getComicsToSave(comics, currentComics: smbcComics)
+            smbcComics = comicsToSave
             break
         default:
             print("error")
             break
         }
         
-        DataManager.sharedManager.saveComicsWithType(comics, type: type)
+        DataManager.sharedManager.saveComicsWithType(comicsToSave, type: type)
         
         self.refreshControl?.endRefreshing()
         self.tableView.reloadData()
     }
-
+    
+    func getComicsToSave(newComics: [Comic], currentComics: [Comic]) -> [Comic]{
+        
+        var newComicArray = [Comic]()
+        
+        for comic in currentComics{
+            if (newComics.contains(comic)){
+                newComicArray.append(comic)
+            }
+        }
+        
+        for comic in newComics{
+            if(!newComicArray.contains(comic)){
+                newComicArray.insert(comic, atIndex: 0)
+            }
+        }
+        
+        return newComicArray
+    }
 }
 

@@ -27,6 +27,11 @@ class ComicDetailViewController : UIViewController, UIScrollViewDelegate {
         createShareButton()
     }
     
+    override func viewDidAppear(animated: Bool) {
+        comic.isUnread = false
+        DataManager.sharedManager.saveSingleComic(comic)
+    }
+    
     func setupView(){
         let comicFormat = Format<UIImage>(name: "comics", diskCapacity: 100 * 1024 * 1024) { image in
             return image
