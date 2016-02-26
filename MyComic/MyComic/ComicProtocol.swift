@@ -17,6 +17,7 @@ struct PropertyKey {
     static let urlKey = "imageSrc"
     static let favKey = "isFavourite"
     static let unreadKey = "isUnread"
+    static let releaseKey = "releaseDate"
 }
 
 enum ComicType : String {
@@ -35,5 +36,6 @@ protocol ComicProtocol {
     var comicImageSrc: NSURL  { get set }
     var isFavourite: Bool { get set }
     var isUnread: Bool { get set }
+    var releaseDate: NSDate { get set }
     func getDescription() -> String
 }

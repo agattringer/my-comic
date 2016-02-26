@@ -14,6 +14,7 @@ class Comic : NSObject, ComicProtocol, NSCoding {
     static let DocumentsDirectory = NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.URLByAppendingPathComponent("comics")
     
+    var releaseDate: NSDate
     var isUnread: Bool
     var isFavourite: Bool
     var comicName: String
@@ -27,6 +28,7 @@ class Comic : NSObject, ComicProtocol, NSCoding {
         comicImageSrc = NSURL(string: "")!
         isFavourite = false
         isUnread = true
+        releaseDate = NSDate()
         super.init()
     }
     
@@ -36,16 +38,18 @@ class Comic : NSObject, ComicProtocol, NSCoding {
         comicImageSrc = NSURL(string: "")!
         isFavourite = false
         isUnread = true
+        releaseDate = NSDate()
         super.init()
     }
     
-    init(name: String, type: ComicType, description: String, url: NSURL, favourite: Bool, unread: Bool) {
+    init(name: String, type: ComicType, description: String, url: NSURL, favourite: Bool, unread: Bool, release: NSDate) {
         comicName = name
         comicType = type
         comicDescription = description
         comicImageSrc = url
         isFavourite = favourite
         isUnread = unread
+        releaseDate = release
         super.init()
     }
     
@@ -65,8 +69,9 @@ class Comic : NSObject, ComicProtocol, NSCoding {
         let url = aDecoder.decodeObjectForKey(PropertyKey.urlKey) as! NSURL
         let fav = aDecoder.decodeBoolForKey(PropertyKey.favKey) as Bool
         let unread = aDecoder.decodeBoolForKey(PropertyKey.unreadKey) as Bool
+        let date = aDecoder.decodeObjectForKey(PropertyKey.releaseKey) as! NSDate
         
-        self.init(name: name, type: ComicType(rawValue: type)!, description: description, url: url, favourite: fav, unread: unread)
+        self.init(name: name, type: ComicType(rawValue: type)!, description: description, url: url, favourite: fav, unread: unread, release: date)
     }
     
     //encode properties
@@ -77,6 +82,7 @@ class Comic : NSObject, ComicProtocol, NSCoding {
         aCoder.encodeObject(comicImageSrc, forKey: PropertyKey.urlKey)
         aCoder.encodeBool(isFavourite, forKey: PropertyKey.favKey)
         aCoder.encodeBool(isUnread, forKey: PropertyKey.unreadKey)
+        aCoder.encodeObject(releaseDate, forKey: PropertyKey.releaseKey)
     }
     
     override func isEqual(object: AnyObject?) -> Bool {

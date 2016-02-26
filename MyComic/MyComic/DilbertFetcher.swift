@@ -11,6 +11,7 @@ import Foundation
 class DilbertFetcher : NSObject, FetcherProtocol, NSXMLParserDelegate {
     
     let urlToFetch: NSURL = NSURL(string:"http://comicfeeds.chrisbenard.net/view/dilbert/rss")!
+    let dateFormat = "EEE, DD MMM yyyy HH:mm:ss xxx"
     var comicsArray: [Comic] = Array()
     var delegate: FetcherDelegate?
     
@@ -67,6 +68,15 @@ class DilbertFetcher : NSObject, FetcherProtocol, NSXMLParserDelegate {
         if (insideItem && element == "title" && currentComic.comicName == ""){
             currentComic.comicName = string
             return
+        }
+        
+        if (insideItem && element == "pubDate" && string.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()) != ""){
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = dateFormat
+            if let date = dateFormatter.dateFromString(string){
+                currentComic.releaseDate = date
+                return
+            }
         }
         
         if (insideItem && string.characters.count > 1 && element == "description"){

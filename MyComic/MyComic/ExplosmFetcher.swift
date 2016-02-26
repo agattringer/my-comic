@@ -16,6 +16,7 @@ class ExplosmFetcher : NSObject, FetcherProtocol {
     let nrOfComicsToFetch = 4
     //regex for everything in double quotes
     let doubleQuoteRegex = "\"(?:\\.|(\\\\\\\")|[^\\\"\"\\n])*\""
+    let dateFormat = "yyyy.MM.dd"
     
     var delegate: FetcherDelegate?
     
@@ -74,9 +75,11 @@ class ExplosmFetcher : NSObject, FetcherProtocol {
         elements = document.searchWithXPathQuery("/html/body/div[1]/div/div[4]/div[1]/div[3]/div[1]/div/div[2]/div/small")
         
         let comicDescription = elements[0].content
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = dateFormat
+        let releaseDate = formatter.dateFromString(comicName)
         
-        
-        return Comic(name: comicName, type: ComicType.Explosm, description: comicDescription, url: NSURL(string: comicSrc)!, favourite: false, unread: true)
+        return Comic(name: comicName, type: ComicType.Explosm, description: comicDescription, url: NSURL(string: comicSrc)!, favourite: false, unread: true, release: releaseDate!)
     }
 
     func fetcherDidFinish(){

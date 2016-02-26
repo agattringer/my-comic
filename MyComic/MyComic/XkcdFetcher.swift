@@ -12,7 +12,9 @@ import Foundation
 class XkcdFetcher : NSObject, FetcherProtocol, NSXMLParserDelegate {
     //URL for the xkcd rss feed
     let urlToFetch: NSURL = NSURL(string:"https://xkcd.com/rss.xml")!
-
+    let dateFormat = "EEE, dd MMM yyyy hh:mm:ss -0000"
+    
+    
     var xmlParser: NSXMLParser!
     var insideItem: Bool = false
     var element: String!
@@ -66,6 +68,15 @@ class XkcdFetcher : NSObject, FetcherProtocol, NSXMLParserDelegate {
         if (insideItem && element == "title"){
             currentComic.comicName = string
             return
+        }
+        
+        if (insideItem && element == "pubDate"){
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = dateFormat
+            if let date = dateFormatter.dateFromString(string){
+                currentComic.releaseDate = date
+                return
+            }
         }
         
         if (insideItem && string.characters.count > 1 && element == "description"){

@@ -10,7 +10,7 @@ import Foundation
 
 class SmbcFetcher : NSObject, FetcherProtocol, NSXMLParserDelegate {
     let urlToFetch = NSURL(string:"http://smbc-comics.com/rss.php")!
-    
+    let dateFormat = "EEE, dd MMM yyyy hh:mm:ss -0500"
     var comicsArray: [Comic] = Array()
     
     var delegate: FetcherDelegate?
@@ -69,6 +69,15 @@ class SmbcFetcher : NSObject, FetcherProtocol, NSXMLParserDelegate {
         if (insideItem && element == "title"){
             currentComic.comicName = string
             return
+        }
+        
+        if (insideItem && element == "pubDate" && string.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()) != ""){
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = dateFormat
+            if let date = dateFormatter.dateFromString(string){
+                currentComic.releaseDate = date
+                return
+            }
         }
         
         if (insideItem && string.characters.count > 1 && element == "description"){
