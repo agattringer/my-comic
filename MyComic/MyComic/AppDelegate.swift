@@ -43,6 +43,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, FetcherDelegate {
     }
     
     func fireLocalNotification(nrOfComics:Int){
+        if (nrOfComics == 0){
+            return
+        }
+        
         let localNotification:UILocalNotification = UILocalNotification()
         localNotification.alertAction = "Hello there!"
         localNotification.alertBody = "There are \(nrOfComics) new comics available that you might wanna check out"
@@ -51,8 +55,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, FetcherDelegate {
     }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        //ask for notifications
         let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
-        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+        application.registerUserNotificationSettings(settings)
+        
+        //background fetch interval
+        application.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
         
         return true
     }
