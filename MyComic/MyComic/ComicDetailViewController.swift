@@ -91,9 +91,11 @@ class ComicDetailViewController : UIViewController, UIScrollViewDelegate {
     }
     
     func shareComic(){
-        let objectsToShare = [comicImageView.image!, comic.comicName]
-        let activityController = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-        presentViewController(activityController, animated: true, completion: nil)
+        if (comicImageView.image != nil){
+            let objectsToShare = [comicImageView.image!, comic.comicName]
+            let activityController = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            presentViewController(activityController, animated: true, completion: nil)
+        }
     }
     
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
