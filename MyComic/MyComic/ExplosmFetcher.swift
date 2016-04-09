@@ -38,22 +38,44 @@ class ExplosmFetcher : NSObject, FetcherProtocol {
         
         
         let matches = matchesForRegexInText(doubleQuoteRegex, text: elements[0].raw)
-        let currentComicSource = matches[2]
+        let currentComicSource = matches[2].stringByReplacingOccurrencesOfString("\"", withString: "")
         
-        sourceStrings.append(currentComicSource)
-        var currentComicString = currentComicSource.substringFromIndex(currentComicSource.startIndex.advancedBy(explosmUrlString.characters.count + 7))
+        let comicUrlsToFetch = NSMutableArray()
+        comicUrlsToFetch.addObject(currentComicSource)
         
-        //get number of current comic for decreasing to get older ones
-        currentComicString = currentComicString.stringByReplacingOccurrencesOfString("/", withString: "")
-        currentComicString = currentComicString.stringByReplacingOccurrencesOfString("\"", withString: "")
-        let currentComicNumber = Int(currentComicString)!
+        comicUrlsToFetch.addObjectsFromArray(getComicsFromSidebar(document))
         
-        for index in 0..<nrOfComicsToFetch {
-            comicsArray.append(fetchSingleComic(explosmComicUrlString + "\(currentComicNumber - index)"))
+        for url in comicUrlsToFetch {
+            comicsArray.append(fetchSingleComic(url as! String))
         }
         
         //finished
         performSelectorOnMainThread("fetcherDidFinish", withObject: nil, waitUntilDone: false)
+    }
+    
+    func getComicsFromSidebar(document: TFHpple) -> [String]{
+        var urlArray = [String]()
+        
+        //second comic
+        urlArray.append(getUrlForSearchPath(document, searchPath: "//*[@id=\"past-week-container\"]/div/div/div/div[1]/div/div[2]/div/h3/a"))
+        
+        //third
+        urlArray.append(getUrlForSearchPath(document, searchPath: "//*[@id=\"past-week-container\"]/div/div/div/div[2]/div/div[2]/div/h3/a"))
+        
+        //fourth
+        urlArray.append(getUrlForSearchPath(document, searchPath: "//*[@id=\"past-week-container\"]/div/div/div/div[3]/div/div[2]/div/h3/a"))
+        
+        return urlArray
+    }
+    
+    func getUrlForSearchPath(document: TFHpple, searchPath: String) -> String{
+        var elements = document.searchWithXPathQuery(searchPath)
+        var matches = matchesForRegexInText(doubleQuoteRegex, text: elements[0].raw)
+       
+        var comicSrc = matches[0].stringByReplacingOccurrencesOfString("\"", withString: "")
+        comicSrc = comicSrc.substringFromIndex(comicSrc.startIndex.advancedBy(1))
+        
+        return explosmUrlString + comicSrc
     }
     
     func fetchSingleComic(urlString: String) -> Comic{
