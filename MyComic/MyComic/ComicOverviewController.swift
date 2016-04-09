@@ -8,11 +8,17 @@
 
 import UIKit
 
-class ComicOverviewController: UITableViewController, FetcherDelegate{
+enum OverviewMode {
+    case Favourites
+    case Normal
+}
 
+class ComicOverviewController: UITableViewController, FetcherDelegate{
     let cellReuseIdentifier = "ComicCell"
     let showComicDetail = "showComicDetail"
     let showSettings = "showSettings"
+    
+    var currentMode: OverviewMode = OverviewMode.Normal
     
     var xkcdComics: [Comic] = []
     var explosmComics: [Comic] = []
@@ -20,6 +26,7 @@ class ComicOverviewController: UITableViewController, FetcherDelegate{
     var smbcComics: [Comic] = []
     
     var selectedComics: [String] = []
+    var favouriteComics: [Comic] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,7 +87,15 @@ class ComicOverviewController: UITableViewController, FetcherDelegate{
     }
     
     func favouritesButtonPressed(){
-        print("favourites")
+        if (currentMode == OverviewMode.Normal){
+            currentMode = OverviewMode.Favourites
+            if let favs = DataManager.sharedManager.loadFavouriteComics(){
+                favouriteComics = favs
+            }
+        }else{
+            currentMode = OverviewMode.Normal
+        }
+        self.tableView.reloadData()
     }
     
     func settingsButtonPressed(){
@@ -88,19 +103,33 @@ class ComicOverviewController: UITableViewController, FetcherDelegate{
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return selectedComics.count
+        if (currentMode == OverviewMode.Normal){
+            return selectedComics.count
+        }
+        return 1
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return getComicArrayForSection(section).count
+        if (currentMode == OverviewMode.Normal){
+            return getComicArrayForSection(section).count
+        }
+        return favouriteComics.count
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return selectedComics[section]
+        if (currentMode == OverviewMode.Normal){
+            return selectedComics[section]
+        }
+        return "Favourites"
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:ComicTableViewCell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as! ComicTableViewCell
+        
+        if (currentMode == OverviewMode.Favourites){
+            cell.initWithComic(favouriteComics[indexPath.row])
+            return cell
+        }
         
         let comics = getComicArrayForSection(indexPath.section)
         if (!comics.isEmpty){
@@ -196,7 +225,7 @@ class ComicOverviewController: UITableViewController, FetcherDelegate{
                 newComicArray.insert(comic, atIndex: index++)
             }
         }
-    
+        newComicArray.sortInPlace({$0.releaseDate.compare($1.releaseDate) == .OrderedDescending})
         return newComicArray
     }
 }
