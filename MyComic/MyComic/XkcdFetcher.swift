@@ -89,6 +89,7 @@ class XkcdFetcher : NSObject, FetcherProtocol, NSXMLParserDelegate {
     }
     
     func fetcherDidFinish(){
+        comicsArray.sortInPlace({$0.releaseDate.compare($1.releaseDate) == .OrderedDescending})
         delegate?.fetcherDidFinish(comicsArray, type: ComicType.Xkcd)
     }
     
