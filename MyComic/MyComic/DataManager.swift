@@ -32,6 +32,24 @@ class DataManager {
         favouritesURL = documentsDirectory.URLByAppendingPathComponent("favouriteComics")
     }
     
+    func nrOfUnreadComics() -> Int{
+        var unreadComics = 0
+        
+        if let selectedComics = loadSelectedComics(){
+            for type in selectedComics{
+                if let comics = loadComicsWithType(ComicType(rawValue: type)!){
+                    for comic in comics{
+                        if (comic.isUnread){
+                            unreadComics++
+                        }
+                    }
+                }
+            }
+        }
+        
+        return unreadComics
+    }
+    
     func saveSingleComic(comic: Comic){
         if let comics = loadComicsWithType(comic.comicType){
             //search for the comic to change

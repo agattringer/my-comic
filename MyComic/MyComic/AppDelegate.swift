@@ -9,13 +9,59 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, FetcherDelegate {
 
     var window: UIWindow?
+    var fetchersRunning = 0
 
-
+    func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        
+        let result = fetchComics()
+        completionHandler(result.fetchResult)
+    }
+    
+    func fetchComics() -> (fetchResult: UIBackgroundFetchResult, nrOfNewComics: Int){
+        let fetchers = DataManager.sharedManager.loadFetchersForSelectedComics()
+        
+        for var fetcher in fetchers {
+            fetcher.delegate = self
+            fetcher.fetchComics()
+            fetchersRunning++
+        }
+        
+        return (UIBackgroundFetchResult.NewData, 0)
+    }
+    
+    func fetcherDidFinish(comics: [Comic], type: ComicType) {
+        let overviewController = ComicOverviewController()
+        overviewController.fetcherDidFinish(comics, type: type)
+        fetchersRunning--
+        if (fetchersRunning == 0){
+            fireLocalNotification(DataManager.sharedManager.nrOfUnreadComics())
+            print("fetch finished")
+        }
+    }
+    
+    func fireLocalNotification(nrOfComics:Int){
+        if (nrOfComics == 0){
+            return
+        }
+        
+        let localNotification:UILocalNotification = UILocalNotification()
+        localNotification.alertAction = "Hello there!"
+        localNotification.alertBody = "There are \(nrOfComics) new comics available that you might wanna check out"
+        localNotification.fireDate = NSDate(timeIntervalSinceNow: 3)
+        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+    }
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        //ask for notifications
+        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
+        application.registerUserNotificationSettings(settings)
+        
+        //background fetch interval
+        application.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
+        
         return true
     }
 
