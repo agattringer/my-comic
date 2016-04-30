@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="N0H-C9-aWb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="N0H-C9-aWb">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -27,10 +27,10 @@
                                 </items>
                             </navigationBar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k3Q-z0-zCx">
-                                <rect key="frame" x="0.0" y="44" width="600" height="512"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JE1-vw-her">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
@@ -76,7 +76,7 @@
                             <constraint firstItem="Y0D-a6-KiW" firstAttribute="leading" secondItem="tbP-KB-B3A" secondAttribute="leading" id="jeV-bt-i5c"/>
                             <constraint firstItem="WSU-Zc-Ddk" firstAttribute="top" secondItem="TGM-sq-RK2" secondAttribute="bottom" id="vEe-eq-n1u"/>
                             <constraint firstItem="Y0D-a6-KiW" firstAttribute="top" secondItem="tbP-KB-B3A" secondAttribute="top" id="vZt-A0-KbW"/>
-                            <constraint firstItem="k3Q-z0-zCx" firstAttribute="top" secondItem="tbP-KB-B3A" secondAttribute="top" constant="44" id="ycS-fZ-JrV"/>
+                            <constraint firstItem="k3Q-z0-zCx" firstAttribute="top" secondItem="tbP-KB-B3A" secondAttribute="top" constant="64" id="ycS-fZ-JrV"/>
                         </constraints>
                     </view>
                     <connections>
